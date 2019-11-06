@@ -1,0 +1,13 @@
+<ul *ngIf="toggle == true">
+    <li><a [routerLink]="['/dashboard']">DASHBOARD</a></li>
+    <li><a [routerLink]="['/my-claims']">MY CLAIMS</a></li>
+    <li><a [routerLink]="['/home']">NOTIFICATIONS</a></li> 
+    <li><a [routerLink]="['/home']">RESOURCES</a></li> 
+</ul>
+
+<ul *ngIf="toggle == false">
+    <li><a [routerLink]="['/dashboard']"><i>d</i></a></li>
+    <li><a [routerLink]="['/my-claims']"><i>m</i></a></li>
+    <li><a [routerLink]="['/home']"><i>n</i></a></li>
+    <li><a [routerLink]="['/home']"><i>r</i></a></li> 
+</ul>
