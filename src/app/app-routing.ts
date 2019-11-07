@@ -7,8 +7,8 @@ import { MyClaimsComponent } from './my-claims/my-claims.component';
 import { ClaimDetailsComponent } from './claim-details/claim-details.component';
 
 const routes: Routes = [
-  	{ 
-		path: '', 
+	{
+		path: '',
 		component: ContainerComponent,
 		// canActivate: [AuthGuard],
 		// resolve: { message: GenericResolver },
