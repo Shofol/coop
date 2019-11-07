@@ -1,1 +1,87 @@
-<p>dashboard works!</p>
+<nav class="navbar " role="navigation" aria-label="main navigation">
+    <h1 class="is-size-4 has-text-grey-darker p-l-15 p-t-15 has-text-centered-mobile">Dashboard</h1>
+    <div class="navbar-end ">
+        <div class="navbar-item has-text-centered-mobile">
+            <a class="button is-medium is-white">
+                <span>
+                    <i class="fas fa-bell"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-flex has-text-centered-mobile">
+                <a class="button button is-white">
+                    <span>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+                </a> <a class="button button is-white">
+                    <span>
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                </a>
+                <h2 class="is-size-4 has-text-grey-darker">{{date}}</h2>
+            </div>
+            <div class="column has-text-right has-text-centered-mobile">
+                <div class="dropdown is-hoverable">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>{{selectedTenor}}</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                            <a href="#" *ngFor="let tenor of tenors" [ngClass]="{'is-active': selectedTenor === tenor}"
+                                class="dropdown-item">
+                                {{tenor}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column">
+                <div class="card-content has-text-centereded has-background-light">
+                    <h1 class="is-size-3 has-text-weight-bold has-text-black">$112,310.10</h1>
+                    <p class="has-text-weight-bold">TOTAL COLLECTION POTENTIAL</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card-content has-text-centereded has-background-light">
+                    <h1 class="has-text-success is-size-3 has-text-weight-bold">$23,312.31</h1>
+                    <p class="has-text-weight-bold">TOTAL CLAIMS COLLECTED</p>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card-content has-text-centereded has-background-light">
+                    <h1 class="has-text-danger is-size-3 has-text-weight-bold">$3,210.12</h1>
+                    <p class="has-text-weight-bold">TOTAL CLAIMS LOST</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h1 class="is-size-4 has-text-grey-darker">Reminders</h1>
+        <h2 class="is-size-5 has-text-grey-darker">
+            Claim info and task to-do
+        </h2>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h1 class="is-size-4 has-text-grey-darker">Claims to-do</h1>
+        <h2 class="is-size-5 has-text-grey-darker">
+            Show top 5 claims
+        </h2>
+    </div>
+</section>

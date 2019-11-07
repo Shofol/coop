@@ -1,13 +1,35 @@
+<figure class="image is-128x128 center-margin m-b-20 m-t-20">
+    <img src="../../assets/images/logo.png">
+</figure>
 <ul *ngIf="toggle == true">
-    <li><a [routerLink]="['/dashboard']">DASHBOARD</a></li>
-    <li><a [routerLink]="['/my-claims']">MY CLAIMS</a></li>
-    <li><a [routerLink]="['/home']">NOTIFICATIONS</a></li> 
-    <li><a [routerLink]="['/home']">RESOURCES</a></li> 
-</ul>
 
-<ul *ngIf="toggle == false">
-    <li><a [routerLink]="['/dashboard']"><i>d</i></a></li>
-    <li><a [routerLink]="['/my-claims']"><i>m</i></a></li>
-    <li><a [routerLink]="['/home']"><i>n</i></a></li>
-    <li><a [routerLink]="['/home']"><i>r</i></a></li> 
-</ul>
+    <aside class="menu" *ngIf="toggle">
+        <!-- <p class="menu-label">
+            General
+        </p>
+        <p class="menu-label">
+            Administration
+        </p>
+        <p class="menu-label">
+            Transactions
+        </p> -->
+        <ul class="menu-list">
+            <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" class="p-t-10 p-b-10">DASHBOARD</a></li>
+            <li><a [routerLink]="['/my-claims']" routerLinkActive="is-active" class="p-t-10 p-b-10">MY CLAIMS</a></li>
+            <li><a [routerLink]="['/notifications']" routerLinkActive="is-active"
+                    class="p-t-10 p-b-10">NOTIFICATIONS</a>
+            </li>
+            <li><a [routerLink]="['/resources']" routerLinkActive="is-active" class="p-t-10 p-b-10">RESOURCES</a></li>
+        </ul>
+
+    </aside>
+
+
+    <!-- </ul> -->
+
+    <ul *ngIf="!toggle">
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active"><i class="fas fa-tachometer-alt"></i></a></li>
+        <li><a [routerLink]="['/my-claims']" routerLinkActive="is-active">MY CLAIMS</a></li>
+        <li><a [routerLink]="['/notifications']" routerLinkActive="is-active">NOTIFICATIONS</a></li>
+        <li><a [routerLink]="['/resources']" routerLinkActive="is-active">RESOURCES</a></li>
+    </ul>
