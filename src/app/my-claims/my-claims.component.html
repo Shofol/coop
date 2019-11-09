@@ -1,143 +1,155 @@
-<nav class="navbar " role="navigation" aria-label="main navigation">
-    <h1 class="is-size-4 has-text-grey-darker p-l-15 p-t-15 has-text-centered-mobile">My Claims</h1>
-    <div class="navbar-end ">
-        <div class="navbar-item has-text-centered-mobile">
-            <a class="button is-medium is-white">
-                <span>
-                    <i class="fas fa-bell has-text-grey	"></i>
-                </span>
-            </a>
+<div *ngIf="rows.length>0">
+    <nav class="navbar " role="navigation" aria-label="main navigation">
+        <h1 class="is-size-4 has-text-grey-darker p-l-15 p-t-15 has-text-centered-mobile">My Claims</h1>
+        <div class="navbar-end ">
+            <div class="navbar-item has-text-centered-mobile">
+                <app-notification></app-notification>
+            </div>
         </div>
-    </div>
-</nav>
-<section class="section">
-    <div class="tabs">
-        <ul class="is-uppercase">
-            <li class="is-active"><a>Assigned to me</a></li>
-            <li><a>Completed</a></li>
-        </ul>
-    </div>
-</section>
-<section class="section p-t-0">
-    <div class="is-flex container space-between align-items-center">
-        <h1 class="is-size-4 has-text-grey-darker has-text-left">Claims</h1>
-        <div class="control  has-icons-right">
-            <input class="input" type="text" placeholder="Search...">
-            <span class="icon is-small is-right">
-                <i class="fas fa-search"></i>
-            </span>
+    </nav>
+    <section class="section">
+        <div class="tabs">
+            <ul class="is-uppercase">
+                <li [ngClass]="{'is-active' : activeTab === 'assigned'}"><a (click)="changeTab($event)"
+                        id="assigned">Assigned to
+                        me</a></li>
+                <li [ngClass]="{'is-active' : activeTab === 'completed'}"><a (click)="changeTab($event)"
+                        id="completed">Completed</a>
+                </li>
+            </ul>
         </div>
-        <span>
-            <a class="button is-white has-text-grey" (click)="toggleFilterMenu()">
-                <i class="fas fa-filter"></i>
-                <span class="p-l-5 is-size-7">Filter</span>
-            </a>
-        </span>
-        <span class="is-flex align-items-center">
-            <span class="p-r-5 is-size-7">Group by provider</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-        </span>
-        <span class="is-flex align-items-center">
-            <span class="p-r-5 is-size-7">1-10 of 30</span>
-            <a class="button button is-white roundButton">
-                <span>
-                    <i class="fa fa-angle-left"></i>
+    </section>
+    <section class="section p-t-0" *ngIf="activeTab === 'assigned'" [@slideInOut]>
+        <div class="is-flex container space-between align-items-center">
+            <h1 class="is-size-4 has-text-grey-darker has-text-left">Claims</h1>
+            <div class="control  has-icons-right">
+                <input class="input" type="text" placeholder="Search...">
+                <span class="icon is-small is-right">
+                    <i class="fas fa-search"></i>
                 </span>
-            </a> <a class="button button is-white roundButton">
-                <span>
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </a>
-        </span>
-    </div>
-</section>
-
-<section class="p-t-0">
-    <ngx-datatable class="bootstrap m-l-20 m-r-20" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50"
-        [footerHeight]="50" rowHeight="auto" [limit]="10" [selected]="selected" [selectionType]="SelectionType.checkbox"
-        (activate)="onActivate($event)" (select)="onSelect($event)">
-        <ngx-datatable-column [width]="40" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-            [resizeable]="false">
-            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                let-selectFn="selectFn">
-                <input type="checkbox" class="customCheckbox" [checked]="allRowsSelected"
-                    (change)="selectFn(!allRowsSelected)" />
-            </ng-template>
-            <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-                let-onCheckboxChangeFn="onCheckboxChangeFn">
-                <input type="checkbox" class="customCheckbox" [checked]="isSelected"
-                    (change)="onCheckboxChangeFn($event)" />
-            </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Name"></ngx-datatable-column>
-        <ngx-datatable-column name="Gender"></ngx-datatable-column>
-        <ngx-datatable-column name="Company"></ngx-datatable-column>
-    </ngx-datatable>
-</section>
-<!-- <div class="selected-column">
-        <h4>
-            Selections <small>({{ selected?.length }})</small>
-        </h4>
-        <ul>
-            <li *ngFor="let sel of selected">
-                {{ sel.name }}
-            </li>
-            <li *ngIf="!selected?.length">No Selections</li>
-        </ul>
-    </div> -->
-
-
-
-
-<aside class="menu filterMenu" *ngIf="showFilterMenu" [@slideInOut]>
-    <span class="is-flex">
-        <a class="closeButton" (click)="toggleFilterMenu()">
+            </div>
             <span>
-                <i class="fa fa-times has-text-grey	"></i>
+                <a class="button is-white has-text-grey" (click)="toggleFilterMenu()">
+                    <i class="fas fa-filter"></i>
+                    <span class="p-l-5 is-size-7">Filter</span>
+                </a>
             </span>
-        </a>
-        <h1 class="is-size-4 has-text-grey-darker">Filter Claims</h1>
-    </span>
-    <mat-accordion>
-        <mat-expansion-panel [expanded]="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Edits
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-panel-description>
-                <ul class="menu-list p-t-10">
-                    <li class="m-b-10"><input type="checkbox" class="customCheckbox" (change)="onAllSelect()">
-                        Select all {{totalEdits.length}} edits</li>
-                    <li *ngFor="let edit of totalEdits; index as i" class="m-b-10"><input type="checkbox"
-                            [checked]="edit.checked" class="customCheckbox">
-                        Edit {{i+1}}</li>
-                </ul>
-            </mat-panel-description>
-        </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion class="m-t-10">
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Filter Option 2
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-panel-description>
-                <ul class="menu-list p-t-10">
-                    <li class="m-b-10"><input type="checkbox" class="customCheckbox" (change)="onAllSelect()">
-                        Select all {{totalEdits.length}} edits</li>
-                    <li *ngFor="let edit of totalEdits; index as i" class="m-b-10"><input type="checkbox"
-                            [checked]="edit.checked" class="customCheckbox">
-                        Edit {{i+1}}</li>
-                </ul>
-            </mat-panel-description>
-        </mat-expansion-panel>
-    </mat-accordion>
+            <span class="is-flex align-items-center">
+                <span class="p-r-5 is-size-7">Group by provider</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </span>
+            <span class="is-flex align-items-center">
+                <span class="p-r-5 is-size-7">1-10 of 30</span>
+                <a class="button button is-white roundButton">
+                    <span>
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+                </a> <a class="button button is-white roundButton">
+                    <span>
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                </a>
+            </span>
+        </div>
+    </section>
 
-    <button class="button is-fullwidth is-link m-t-20">Apply Filters</button>
+    <section class="p-t-0" *ngIf="activeTab === 'assigned'" [@slideInOut]>
+        <ngx-datatable class="bootstrap m-l-20 m-r-20" [rows]="rows" [columnMode]="ColumnMode.force" [headerHeight]="50"
+            [footerHeight]="50" rowHeight="auto" [limit]="10" [selected]="selected"
+            [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)" (select)="onSelect($event)">
+            <ngx-datatable-column [width]="40" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                    let-selectFn="selectFn">
+                    <input type="checkbox" class="customCheckbox" [checked]="allRowsSelected"
+                        (change)="selectFn(!allRowsSelected)" />
+                </ng-template>
+                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                    let-onCheckboxChangeFn="onCheckboxChangeFn">
+                    <input type="checkbox" class="customCheckbox" [checked]="isSelected"
+                        (change)="onCheckboxChangeFn($event)" />
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Name"></ngx-datatable-column>
+            <ngx-datatable-column name="Gender"></ngx-datatable-column>
+            <ngx-datatable-column name="Company"></ngx-datatable-column>
+        </ngx-datatable>
+    </section>
+    <section *ngIf="activeTab === 'completed'" [@slideInOut]>
+        <p>Completed Tab works!</p>
+    </section>
 
-</aside>
+    <aside class="menu filterMenu" *ngIf="showFilterMenu" [@slideInOut]>
+        <span class="is-flex">
+            <a class="closeButton" (click)="toggleFilterMenu()">
+                <span>
+                    <i class="fa fa-times has-text-grey	"></i>
+                </span>
+            </a>
+            <h1 class="is-size-4 has-text-grey-darker">Filter Claims</h1>
+        </span>
+        <mat-accordion>
+            <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Edits
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-panel-description>
+                    <ul class="menu-list p-t-10">
+                        <li class="m-b-10"><input type="checkbox" class="customCheckbox" (change)="onAllSelect()">
+                            Select all {{totalEdits.length}} edits</li>
+                        <li *ngFor="let edit of totalEdits; index as i" class="m-b-10"><input type="checkbox"
+                                [checked]="edit.checked" class="customCheckbox">
+                            Edit {{i+1}}</li>
+                    </ul>
+                </mat-panel-description>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion class="m-t-10">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Filter Option 2
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-panel-description>
+                    <ul class="menu-list p-t-10">
+                        <li class="m-b-10"><input type="checkbox" class="customCheckbox" (change)="onAllSelect()">
+                            Select all {{totalEdits.length}} edits</li>
+                        <li *ngFor="let edit of totalEdits; index as i" class="m-b-10"><input type="checkbox"
+                                [checked]="edit.checked" class="customCheckbox">
+                            Edit {{i+1}}</li>
+                    </ul>
+                </mat-panel-description>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <button class="button is-fullwidth is-link m-t-20">Apply Filters</button>
+    </aside>
+</div>
+
+<div *ngIf="rows.length===0" class="is-flex justify-content-center align-items-center" style="height:100vh">
+    <div class="has-text-centered has-text-dark">
+        <img src="assets/images/pizza.png" width="100px" alt="">
+        <p class="is-size-4 has-text-weight-medium">You've completed all of your assigned claims!</p>
+        <p>Enjoy that slice, you deserve it...</p>
+    </div>
+</div>
+
+
+
+<!-- <div class="selected-column">
+    <h4>
+        Selections <small>({{ selected?.length }})</small>
+    </h4>
+    <ul>
+        <li *ngFor="let sel of selected">
+            {{ sel.name }}
+        </li>
+        <li *ngIf="!selected?.length">No Selections</li>
+    </ul>
+</div> -->

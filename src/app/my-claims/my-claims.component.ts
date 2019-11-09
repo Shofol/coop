@@ -33,6 +33,8 @@ export class MyClaimsComponent {
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
+  activeTab = 'assigned';
+
   constructor() {
     this.fetch(data => {
       this.rows = data;
@@ -61,16 +63,8 @@ export class MyClaimsComponent {
     console.log('Activate Event', event);
   }
 
-  add() {
-    this.selected.push(this.rows[1], this.rows[3]);
-  }
-
-  update() {
-    this.selected = [this.rows[1], this.rows[3]];
-  }
-
-  remove() {
-    this.selected = [];
+  changeTab(event) {
+    this.activeTab = event.target.id;
   }
 
   onAllSelect() {

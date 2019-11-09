@@ -1,0 +1,31 @@
+<div class="dropdown is-hoverable is-right">
+    <div class="dropdown-trigger">
+        <a class="button is-medium is-white" aria-haspopup="true" aria-controls="dropdown-menu2">
+            <span>
+                <i class="fas fa-bell has-text-grey notificationIcon"></i>
+                <span class="noitificationNumberIcon" *ngIf="notifications.length>0">{{notifications.length}}</span>
+            </span>
+        </a>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+        <div class="dropdown-content" style="width: 24rem;">
+            <div class="dropdown-item p-l-20 p-r-20 has-text-dark">
+                <p class="is-size-5">Notifications</p>
+                <ul>
+                    <li class="is-flex p-t-10 p-b-10 appNotification has-text-dark"
+                        *ngFor="let notification of notifications">
+                        <span>{{notification.msg}}</span>
+                        <span><button class="button button is-info is-normal is-size-7">Check it out</button></span>
+                        <hr class="dropdown-divider">
+
+                    </li>
+                </ul>
+                <div class="has-text-centered p-t-20 p-b-10">
+                    <a class="has-text-grey" style="text-decoration: underline;">
+                        View all notifications
+                    </a></div>
+            </div>
+
+        </div>
+    </div>
+</div>

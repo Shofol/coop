@@ -19,6 +19,7 @@ import { JwtInterceptor, ErrorInterceptor } from '@/_helpers';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AppNotificationComponent } from './_components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ContainerComponent,
     LoginComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    AppNotificationComponent
   ],
   imports: [
     BrowserModule,
