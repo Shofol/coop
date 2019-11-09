@@ -4,7 +4,7 @@
         <div class="navbar-item has-text-centered-mobile">
             <a class="button is-medium is-white">
                 <span>
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-bell has-text-grey	"></i>
                 </span>
             </a>
         </div>
@@ -13,20 +13,20 @@
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-flex has-text-centered-mobile">
-                <a class="button button is-white">
+            <div class="column is-flex has-text-centered-mobile align-items-center is-four-fifths">
+                <a class="button button is-white roundButton">
                     <span>
                         <i class="fa fa-angle-left"></i>
                     </span>
-                </a> <a class="button button is-white">
+                </a> <a class="button button is-white roundButton">
                     <span>
                         <i class="fa fa-angle-right"></i>
                     </span>
                 </a>
-                <h2 class="is-size-4 has-text-grey-darker">{{date}}</h2>
+                <h2 class="is-size-4 has-text-grey-darker p-l-5">{{date}}</h2>
             </div>
-            <div class="column has-text-right has-text-centered-mobile">
-                <div class="dropdown is-hoverable">
+            <div class="column has-text-right has-text-centered-mobile p-t-0">
+                <div class="dropdown is-hoverable is-right">
                     <div class="dropdown-trigger">
                         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                             <span>{{selectedTenor}}</span>

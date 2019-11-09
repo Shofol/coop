@@ -1,0 +1,107 @@
+@import "~@swimlane/ngx-datatable/index.css";
+@import "~@swimlane/ngx-datatable/themes/bootstrap.scss";
+@import "~@swimlane/ngx-datatable/assets/icons.css"; // Set your brand colors
+@import "_bulma_modified";
+
+// update of ngx-datatable
+.ngx-datatable.bootstrap .datatable-header {
+  font-weight: 900;
+  color: #262626;
+}
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row {
+  border-top: none !important;
+  color: #262626 !important;
+}
+.ngx-datatable.bootstrap
+  .datatable-body
+  .datatable-body-row.datatable-row-even {
+  background-color: #fafafa !important;
+}
+.ngx-datatable.bootstrap
+  .datatable-body
+  .datatable-body-row.datatable-row-even.active {
+  background-color: #fafafa !important;
+}
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row.active {
+  background-color: white !important;
+  // color: #fff;
+}
+
+.ngx-datatable.bootstrap .datatable-footer {
+  background: none !important;
+  color: $cyan;
+  margin-top: 2rem;
+}
+.ngx-datatable .datatable-footer .datatable-pager .pager li a {
+  color: $cyan !important;
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li {
+  margin: 0 !important;
+}
+.ngx-datatable.bootstrap
+  .datatable-footer
+  .datatable-pager
+  ul
+  li:not(.disabled).active
+  a {
+  background: $cyan;
+  color: white !important;
+  border: 1px solid $cyan;
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul {
+  li:not(.disabled):hover a {
+    background: none !important;
+  }
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul {
+  li.active:hover a {
+    color: $cyan !important;
+  }
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager a {
+  padding: 0.5rem 0.8rem;
+  margin: 0 !important;
+  border: 1px solid #bfbfbf;
+  border-radius: 0 !important;
+  height: 38px !important;
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul {
+  li:first-child,
+  li:last-child {
+    display: none;
+  }
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:nth-child(2) {
+  margin-right: 1rem !important;
+  a {
+    border-radius: 50% !important;
+    padding: 0.5rem 0.4rem !important;
+  }
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:nth-child(3) {
+  a {
+    border-radius: 4px 0px 0px 4px !important;
+  }
+}
+.ngx-datatable.bootstrap
+  .datatable-footer
+  .datatable-pager
+  ul
+  li:nth-last-child(3) {
+  a {
+    border-radius: 0px 4px 4px 0px !important;
+  }
+}
+.ngx-datatable.bootstrap
+  .datatable-footer
+  .datatable-pager
+  ul
+  li:nth-last-child(2) {
+  margin-left: 1rem !important;
+  a {
+    border-radius: 50% !important;
+    padding: 0.5rem 0.4rem !important;
+  }
+}

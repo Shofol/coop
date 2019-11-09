@@ -1,0 +1,18 @@
+.filterMenu {
+  padding: 2rem 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  background: white;
+  height: 100%;
+  -webkit-box-shadow: -2px 3px 58px 17px rgba(168, 166, 168, 0.3);
+  -moz-box-shadow: -2px 3px 58px 17px rgba(168, 166, 168, 0.3);
+  box-shadow: -2px 3px 58px 17px rgba(168, 166, 168, 0.3);
+  min-width: 20%;
+}
+
+.closeButton {
+  cursor: pointer;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+}

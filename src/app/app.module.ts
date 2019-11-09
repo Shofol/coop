@@ -17,6 +17,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor, ErrorInterceptor } from '@/_helpers';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -31,28 +33,30 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   ],
   imports: [
     BrowserModule,
-	ReactiveFormsModule,
-	HttpClientModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
+    MatExpansionModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-	}),
+    }),
     NgxDatatableModule.forRoot({
       messages: {
         emptyMessage: 'No data to display',
         totalMessage: 'total',
         selectedMessage: 'selected'
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
-	  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-	  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-	  MenuResolverService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    MenuResolverService,
   ],
   bootstrap: [AppComponent]
 })

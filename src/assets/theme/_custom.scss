@@ -1,0 +1,112 @@
+@import "_helpers"; // CSS added by SHOFOL
+
+.customCheckbox {
+  position: relative;
+  margin-right: 0.8rem;
+  cursor: pointer;
+}
+.customCheckbox::before {
+  position: absoulte;
+  display: block;
+  content: "";
+  border: #ccc 1px solid;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #fff;
+  margin-top: -3px;
+  transition: background 0.25s;
+}
+
+.customCheckbox:checked::before {
+  background: $cyan;
+  border: $cyan 2px solid;
+}
+
+.customCheckbox:checked::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00c";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  color: white;
+  top: 2px;
+  right: -2px;
+  right: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.roundButton {
+  color: #bfbfbf !important;
+  border: 1px solid #bfbfbf !important;
+  border-radius: 50%;
+  margin: 0rem 0.2rem;
+  &:hover {
+    color: $cyan !important;
+  }
+}
