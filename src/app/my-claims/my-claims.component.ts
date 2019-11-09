@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { trigger, transition, style, animate, useAnimation } from '@angular/animations';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
+import {
+  slideInOutEnterAnimation, slideInOutLeaveAnimation, fadeInOutEnterAnimation,
+  fadeInOutLeaveAnimation
+} from '../_animations/claims.animations';
 
 @Component({
   selector: 'app-my-claims',
@@ -8,13 +12,12 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
   styleUrls: ['./my-claims.component.css'],
   animations: [
     trigger('slideInOut', [
-      transition(':enter', [
-        style({ transform: 'translateX(100%)' }),
-        animate('200ms ease-in', style({ transform: 'translateX(0%)' }))
-      ]),
-      transition(':leave', [
-        animate('200ms ease-in', style({ transform: 'translateX(100%)' }))
-      ])
+      transition(':enter', [useAnimation(slideInOutEnterAnimation)]),
+      transition(':leave', [useAnimation(slideInOutLeaveAnimation)])
+    ]),
+    trigger('fadeInOut', [
+      transition(':enter', [useAnimation(fadeInOutEnterAnimation)]),
+      transition(':leave', [useAnimation(fadeInOutLeaveAnimation)])
     ])
   ]
 })
@@ -43,7 +46,7 @@ export class MyClaimsComponent {
 
   fetch(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/company.json`);
+    req.open('GET', `assets/data/claims.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));

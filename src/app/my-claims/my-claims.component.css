@@ -10,6 +10,8 @@
   -moz-box-shadow: -2px 3px 58px 17px rgba(168, 166, 168, 0.3);
   box-shadow: -2px 3px 58px 17px rgba(168, 166, 168, 0.3);
   min-width: 20%;
+  margin-bottom: -5000px; /* any large number will do */
+  padding-bottom: 5000px;
 }
 
 .closeButton {
