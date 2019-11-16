@@ -4,9 +4,12 @@
 @import "_bulma_modified";
 
 // update of ngx-datatable
-.ngx-datatable.bootstrap .datatable-header {
-  font-weight: 900;
-  color: #262626;
+.ngx-datatable.bootstrap {
+  overflow: visible;
+  .datatable-header {
+    font-weight: 900;
+    color: #262626;
+  }
 }
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row {
   border-top: none !important;

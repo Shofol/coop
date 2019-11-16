@@ -1,7 +1,7 @@
 <section class="section header">
     <div class="columns is-multiline">
         <div class="column is-flex align-items-center is-one-third">
-            <button class="button is-white roundButton"><i class="fa fa-times"></i></button>
+            <button class="button is-white roundButton" (click)="back()"><i class="fa fa-times"></i></button>
             <p class="p-l-10 is-size-4 has-text-dark">Claim #{{claimId}}</p>
 
         </div>
@@ -110,7 +110,7 @@
     </div>
 </section>
 
-<section class="section p-t-20">
+<section class="section p-t-20 p-b-0">
     <div class="columns">
         <div class="column is-three-fifths">
             <div class="tabs">
@@ -318,18 +318,21 @@
                             </div>
                         </div>
                     </div>
-                    <a class="button is-medium is-white" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white" aria-haspopup="true" title="Account"
+                        aria-controls="dropdown-menu2">
                         <span>
                             <i class="fas fa-tty has-text-grey"></i>
 
                         </span>
                     </a>
-                    <a class="button is-medium is-white" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white" aria-haspopup="true" title="Email"
+                        aria-controls="dropdown-menu2">
                         <span>
                             <i class="fas fa-envelope has-text-grey"></i>
                         </span>
                     </a>
-                    <a class="button is-medium is-white" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white" aria-haspopup="true" title="Add Note"
+                        aria-controls="dropdown-menu2">
                         <span>
                             <i class="fas fa-sticky-note has-text-grey"></i>
                         </span>

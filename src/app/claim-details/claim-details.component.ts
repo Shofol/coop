@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { SidebarService } from '../_services/sidebar.service';
 
@@ -29,7 +29,8 @@ export class ClaimDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private _sideBarService: SidebarService
+    private _sideBarService: SidebarService,
+    private router: Router
   ) {
 
     this.fetch(data => {
@@ -117,6 +118,10 @@ export class ClaimDetailsComponent implements OnInit {
   }
   closeReassignModal(person) {
     this.reassignModalDisplay = false;
+  }
+
+  back() {
+    this.router.navigate(['/my-claims']);
   }
 
   ngOnDestroy(): void {
