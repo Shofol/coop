@@ -2,3 +2,11 @@
   margin-bottom: -5000px; /* any large number will do */
   padding-bottom: 5000px;
 }
+
+.smallMenu {
+  max-width: 86px;
+}
+.smallMenuItem {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

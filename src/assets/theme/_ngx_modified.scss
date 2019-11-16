@@ -105,3 +105,8 @@
     padding: 0.5rem 0.4rem !important;
   }
 }
+
+// for showing dropdown in the row
+.datatable-body-cell {
+  overflow-x: visible !important;
+}

@@ -20,7 +20,11 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AppNotificationComponent } from './_components/notification/notification.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { SidebarService } from './_services/sidebar.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +43,12 @@ import { AppNotificationComponent } from './_components/notification/notificatio
     HttpClientModule,
     AppRoutingModule,
     MatExpansionModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatMomentDateModule,
+    MatIconModule,
+    MatInputModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -59,6 +69,7 @@ import { AppNotificationComponent } from './_components/notification/notificatio
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     MenuResolverService,
+    SidebarService
   ],
   bootstrap: [AppComponent]
 })

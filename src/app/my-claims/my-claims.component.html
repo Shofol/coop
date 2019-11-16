@@ -22,7 +22,7 @@
     <section class="section p-t-0" *ngIf="activeTab === 'assigned'" [@fadeInOut]>
         <div class="is-flex container space-between align-items-center">
             <h1 class="is-size-4 has-text-grey-darker has-text-left">Claims</h1>
-            <div class="control  has-icons-right">
+            <div class="control has-icons-right">
                 <input class="input" type="text" placeholder="Search...">
                 <span class="icon is-small is-right">
                     <i class="fas fa-search"></i>
@@ -43,11 +43,11 @@
             </span>
             <span class="is-flex align-items-center">
                 <span class="p-r-5 is-size-7">1-10 of 30</span>
-                <a class="button button is-white roundButton">
+                <a class="button is-white roundButton">
                     <span>
                         <i class="fa fa-angle-left"></i>
                     </span>
-                </a> <a class="button button is-white roundButton">
+                </a> <a class="button is-white roundButton">
                     <span>
                         <i class="fa fa-angle-right"></i>
                     </span>
@@ -90,7 +90,7 @@
                     <p class="has-text-grey">4:23pm Sep 21,2019</p>
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="NEST STEP" [width]="120">
+            <ngx-datatable-column name="NEXT STEP" [width]="120">
                 <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                     <button class="button is-info is-small">Do this thing</button>
                 </ng-template>

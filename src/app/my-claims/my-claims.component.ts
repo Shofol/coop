@@ -5,6 +5,7 @@ import {
   slideInOutEnterAnimation, slideInOutLeaveAnimation, fadeInOutEnterAnimation,
   fadeInOutLeaveAnimation
 } from '../_animations/claims.animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-claims',
@@ -38,7 +39,9 @@ export class MyClaimsComponent {
 
   activeTab = 'assigned';
 
-  constructor() {
+  constructor(
+    private _router: Router
+  ) {
     this.fetch(data => {
       this.rows = data;
     });
@@ -63,7 +66,10 @@ export class MyClaimsComponent {
   }
 
   onActivate(event) {
-    console.log('Activate Event', event);
+    // console.log('Activate Event', event);
+    if (event.type === 'click') {
+      this._router.navigate(['/claim-details'], { queryParams: { claimID: event.row.claimId } });
+    }
   }
 
   changeTab(event) {

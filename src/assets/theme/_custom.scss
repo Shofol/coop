@@ -110,3 +110,11 @@ input:checked + .slider:before {
     color: $cyan !important;
   }
 }
+
+.modalCloseButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  // padding-right: 0.8rem !important;
+  // padding-left: 0.8rem !important;
+}

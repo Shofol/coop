@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MenuComponent } from '../menu/menu.component';
+import { SidebarService } from '../_services/sidebar.service';
 
 @Component({
   selector: 'app-container',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('menu', { static: false }) menuComponent: MenuComponent;
+  menuToggle: boolean;
+
+  constructor(private sidebarService: SidebarService) { }
 
   ngOnInit() {
+    this.sidebarService.sidebarSize$.subscribe(
+      res => {
+        this.menuToggle = res;
+      }
+    );
   }
-
 }

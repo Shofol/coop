@@ -1,8 +1,9 @@
 <div class="columns">
-    <div class="column sidebar is-one-fifth has-background-light p-r-0 is-clipped">
-        <app-menu></app-menu>
+    <div class="column sidebar has-background-light p-r-0 is-clipped"
+        [ngClass]="{'smallMenu': !menuToggle, 'is-one-fifth': menuToggle}">
+        <app-menu #menu></app-menu>
     </div>
-    <div class="column">
+    <div class="column" [ngClass]="{'smallMenuItem': !menuToggle}">
         <router-outlet></router-outlet>
     </div>
 </div>

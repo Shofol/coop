@@ -1,38 +1,37 @@
-<figure class="image is-128x128 center-margin m-b-20 m-t-20">
+<figure *ngIf="toggle == true" class="image is-128x128 center-margin m-b-20 m-t-20">
     <img src="../../assets/images/logo.png">
 </figure>
-<ul *ngIf="toggle == true">
 
-    <aside class="menu" *ngIf="toggle">
-        <!-- <p class="menu-label">
-            General
-        </p>
-        <p class="menu-label">
-            Administration
-        </p>
-        <p class="menu-label">
-            Transactions
-        </p> -->
-        <ul class="menu-list">
-            <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">DASHBOARD</a>
-            </li>
-            <li><a [routerLink]="['/my-claims']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">MY CLAIMS</a>
-            </li>
-            <li><a [routerLink]="['/notifications']" routerLinkActive="is-active"
-                    class="p-t-10 p-b-10 p-l-30">NOTIFICATIONS</a>
-            </li>
-            <li><a [routerLink]="['/resources']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">RESOURCES</a>
-            </li>
-        </ul>
+<figure class="image is-32x32 m-l-15 p-t-10" *ngIf="!toggle">
+    <img src="https://bulma.io/images/placeholders/128x128.png">
+</figure>
 
-    </aside>
-
-
-    <!-- </ul> -->
-
-    <ul *ngIf="!toggle">
-        <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active"><i class="fas fa-tachometer-alt"></i></a></li>
-        <li><a [routerLink]="['/my-claims']" routerLinkActive="is-active">MY CLAIMS</a></li>
-        <li><a [routerLink]="['/notifications']" routerLinkActive="is-active">NOTIFICATIONS</a></li>
-        <li><a [routerLink]="['/resources']" routerLinkActive="is-active">RESOURCES</a></li>
+<aside class="menu" [ngClass]="{'smallMenu': !toggle}">
+    <ul class="menu-list" *ngIf="toggle == true">
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">DASHBOARD</a>
+        </li>
+        <li><a [routerLink]="['/my-claims']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">MY CLAIMS</a>
+        </li>
+        <li><a [routerLink]="['/notifications']" routerLinkActive="is-active"
+                class="p-t-10 p-b-10 p-l-30">NOTIFICATIONS</a>
+        </li>
+        <li><a [routerLink]="['/resources']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">RESOURCES</a>
+        </li>
     </ul>
+
+    <ul *ngIf="!toggle" class="has-text-centered p-t-20">
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="smallSidebarMenuActive"><i
+                    class="fas fa-tachometer-alt has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
+        <li><a [routerLink]="['/my-claims']" routerLinkActive="smallSidebarMenuActive"><i
+                    class="fas fa-dollar-sign has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
+        <li><a [routerLink]="['/notifications']" routerLinkActive="smallSidebarMenuActive"><i
+                    class="fas fa-bell has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
+        <li><a [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive"><i
+                    class="fas fa-sticky-note has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
+        <li><a [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive">
+                <i class="fas fa-user has-text-grey p-t-10 p-b-10 p-l-15"></i></a>
+        </li>
+
+    </ul>
+
+</aside>
