@@ -24,6 +24,8 @@ $input-border-color: transparent;
 $input-shadow: none;
 $modal-content-width: 700px;
 
+// $tag-background-color: #f5f9fa;
+
 .menu-list {
   a.is-active {
     background-image: linear-gradient(to left, $pink, $purple, $cyan);
@@ -52,3 +54,4 @@ $modal-content-width: 700px;
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/components/menu.sass";
+// @import "../node_modules/bulma/sass/elments/tag.sass";

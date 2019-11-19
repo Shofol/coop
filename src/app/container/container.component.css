@@ -1,11 +1,12 @@
 .sidebar {
   margin-bottom: -5000px; /* any large number will do */
   padding-bottom: 5000px;
-  z-index: 100;
+  z-index: 39;
 }
 
 .smallMenu {
-  max-width: 86px;
+  max-width: 86px !important;
+  display: flex;
 }
 .smallMenuItem {
   padding-left: 0 !important;

@@ -7,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class SidebarService {
     constructor() { }
 
-    sidebarSize$ = new Subject<any>();
+    sidebarSize$ = new BehaviorSubject<any>(true);
 
     disableFullSizeSidebar() {
         this.sidebarSize$.next(false);

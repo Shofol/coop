@@ -44,3 +44,52 @@
 .ngxColumnElementShowOnHover {
   display: none;
 }
+
+.largeMenu {
+  max-width: 80vw;
+}
+
+.modifiedRoundedButton {
+  padding-right: 0.9rem !important;
+  padding-left: 0.9rem !important;
+}
+
+.modifiedSmallRoundedButton {
+  padding-right: 0.7rem !important;
+  padding-left: 0.7rem !important;
+}
+
+.ribbon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: -8px;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    // z-index: -1;
+    border-bottom: 7px solid transparent;
+    border-right: 8px solid #adbcc2;
+  }
+}
+
+.has-background-cyan {
+  background: #79d7ff;
+}
+
+.has-background-orange {
+  background: #ffb054;
+}
+
+.has-background-lime {
+  background: #78e3bd;
+}
+
+.has-background-purple {
+  background: #7988ff;
+}

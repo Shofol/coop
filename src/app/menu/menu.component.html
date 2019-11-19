@@ -1,12 +1,13 @@
-<figure *ngIf="toggle == true" class="image is-128x128 center-margin m-b-20 m-t-20">
+<figure *ngIf="toggle == true" class="image is-128x128 center-margin m-b-20 m-t-20 cursor-pointer"
+    (click)="hideSidebar()">
     <img src="../../assets/images/logo.png">
 </figure>
 
-<figure class="image is-32x32 m-l-15 p-t-10" *ngIf="!toggle">
+<figure class="image is-32x32 m-l-15 p-t-10 cursor-pointer" *ngIf="!toggle" (click)="expandSidebar()">
     <img src="https://bulma.io/images/placeholders/128x128.png">
 </figure>
 
-<aside class="menu" [ngClass]="{'smallMenu': !toggle}">
+<aside class="menu">
     <ul class="menu-list" *ngIf="toggle == true">
         <li><a [routerLink]="['/dashboard']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">DASHBOARD</a>
         </li>
@@ -20,18 +21,24 @@
     </ul>
 
     <ul *ngIf="!toggle" class="has-text-centered p-t-20">
-        <li><a title="Dashboard" [routerLink]="['/dashboard']" routerLinkActive="smallSidebarMenuActive"><i
-                    class="fas fa-tachometer-alt has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
-        <li><a title="Claims" [routerLink]="['/my-claims']" routerLinkActive="smallSidebarMenuActive"><i
-                    class="fas fa-dollar-sign has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
-        <li><a title="Notifications" [routerLink]="['/notifications']" routerLinkActive="smallSidebarMenuActive"><i
-                    class="fas fa-bell has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
-        <li><a title="Resources" [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive"><i
-                    class="fas fa-sticky-note has-text-grey p-t-10 p-b-10 p-l-15"></i></a></li>
-        <li><a title="Acount" [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive">
-                <i class="fas fa-user has-text-grey p-t-10 p-b-10 p-l-15"></i></a>
+        <li><a [routerLink]="['/dashboard']" routerLinkActive="smallSidebarMenuActive" matTooltip="Dashboard"
+                [matTooltipPosition]="'right'"><i class="fas fa-tachometer-alt has-text-grey p-t-10 p-b-10 "></i></a>
         </li>
-
+        <li><a [routerLink]="['/my-claims']" routerLinkActive="smallSidebarMenuActive" matTooltip="Claims"
+                [matTooltipPosition]="'right'"><i class="fas fa-dollar-sign has-text-grey p-t-10 p-b-10 "></i></a></li>
+        <li><a [routerLink]="['/notifications']" routerLinkActive="smallSidebarMenuActive" matTooltip="Notifications"
+                [matTooltipPosition]="'right'"><i class="fas fa-bell has-text-grey p-t-10 p-b-10 "></i></a></li>
+        <li><a [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive" matTooltip="Resources"
+                [matTooltipPosition]="'right'"><i class="fas fa-sticky-note has-text-grey p-t-10 p-b-10 "></i></a></li>
+        <li><a [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive" matTooltip="Account"
+                [matTooltipPosition]="'right'">
+                <i class="fas fa-user has-text-grey p-t-10 p-b-10 "></i></a>
+        </li>
+        <!-- p-l-15
+        p-l-15
+        p-l-15
+        p-l-15
+        p-l-15 -->
     </ul>
 
 </aside>

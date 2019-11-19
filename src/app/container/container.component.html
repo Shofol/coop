@@ -1,7 +1,7 @@
 <div class="columns">
     <div class="column sidebar has-background-light p-r-0 is-clipped"
         [ngClass]="{'smallMenu': !menuToggle, 'is-one-fifth': menuToggle}">
-        <app-menu #menu></app-menu>
+        <app-menu #menu [toggleOption]="menuToggle"></app-menu>
     </div>
     <div class="column" [ngClass]="{'smallMenuItem': !menuToggle}">
         <router-outlet></router-outlet>

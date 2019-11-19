@@ -25,6 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, MatIconModule, MatInputModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { SidebarService } from './_services/sidebar.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +65,8 @@ import { SidebarService } from './_services/sidebar.service';
         selectedMessage: 'selected'
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

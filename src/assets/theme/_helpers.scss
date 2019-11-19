@@ -10,11 +10,17 @@
 .justify-content-end {
   justify-content: flex-end;
 }
+.justify-content-start {
+  justify-content: flex-start;
+}
 .align-items-center {
   align-items: center;
 }
 .flex-wrap {
   flex-wrap: wrap;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 
 // custom modifier for spacers. 10 means 1 rem, 5 means .5rem and so on.

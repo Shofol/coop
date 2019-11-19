@@ -26,6 +26,7 @@ export class ClaimDetailsComponent implements OnInit {
   SelectionType = SelectionType;
   moreInfoModalDisplay = false;
   reassignModalDisplay = false;
+  largeMenu: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -70,6 +71,12 @@ export class ClaimDetailsComponent implements OnInit {
       }
     );
     this._sideBarService.disableFullSizeSidebar();
+
+    this._sideBarService.sidebarSize$.subscribe(
+      res => {
+        this.largeMenu = res;
+      }
+    );
 
   }
 
@@ -124,7 +131,7 @@ export class ClaimDetailsComponent implements OnInit {
     this.router.navigate(['/my-claims']);
   }
 
-  ngOnDestroy(): void {
-    this._sideBarService.enableFullSizeSidebar();
-  }
+  // ngOnDestroy(): void {
+  //   this._sideBarService.enableFullSizeSidebar();
+  // }
 }

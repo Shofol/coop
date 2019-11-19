@@ -1,11 +1,12 @@
-<section class="section header">
+<section class="section header" [ngClass]="{ 'largeMenu': largeMenu}">
     <div class="columns is-multiline">
         <div class="column is-flex align-items-center is-one-third">
-            <button class="button is-white roundButton" (click)="back()"><i class="fa fa-times"></i></button>
+            <button class="button is-white roundButton modifiedRoundedButton" (click)="back()"><i
+                    class="fa fa-times"></i></button>
             <p class="p-l-10 is-size-4 has-text-dark">Claim #{{claimId}}</p>
 
         </div>
-        <div class="column is-flex flex-wrap justify-content-end">
+        <div class="column is-flex flex-wrap justify-content-end is-multiline">
             <div class="dropdown is-hoverable m-r-10">
                 <div class="dropdown-trigger">
                     <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" style="height: 100%;">
@@ -318,30 +319,259 @@
                             </div>
                         </div>
                     </div>
-                    <a class="button is-medium is-white" aria-haspopup="true" title="Account"
-                        aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white tooltip topTooltip" aria-haspopup="true"
+                        aria-controls="dropdown-menu2" matTooltip="Account" [matTooltipPosition]="'above'">
+                        <!-- <span class="tooltiptext is-size-7">Account</span> -->
                         <span>
                             <i class="fas fa-tty has-text-grey"></i>
-
                         </span>
                     </a>
-                    <a class="button is-medium is-white" aria-haspopup="true" title="Email"
-                        aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white  tooltip topTooltip" aria-haspopup="true"
+                        aria-controls="dropdown-menu2" matTooltip="Email" [matTooltipPosition]="'above'">
+                        <!-- <span class="tooltiptext is-size-7">Email</span> -->
+
                         <span>
                             <i class="fas fa-envelope has-text-grey"></i>
                         </span>
                     </a>
-                    <a class="button is-medium is-white" aria-haspopup="true" title="Add Note"
-                        aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white tooltip topTooltip" aria-haspopup="true"
+                        aria-controls="dropdown-menu2" matTooltip="Add note" [matTooltipPosition]="'above'">
+                        <!-- <span class="tooltiptext is-size-7">Add Note</span> -->
+
                         <span>
                             <i class="fas fa-sticky-note has-text-grey"></i>
                         </span>
                     </a>
-                    <a class="button is-medium is-white" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <a class="button is-medium is-white tooltip topTooltip" aria-haspopup="true"
+                        aria-controls="dropdown-menu2" matTooltip="Notification" [matTooltipPosition]="'above'">
+                        <!-- <span class="tooltiptext is-size-7">Notifications</span> -->
+
                         <span>
                             <i class="fas fa-bell has-text-grey"></i>
                         </span>
                     </a>
+                </div>
+            </section>
+            <section class="section p-t-0">
+                <div class="card ">
+                    <div class="ribbon has-text-white has-background-cyan" matTooltip="Phone Call"
+                        [matTooltipPosition]="'above'">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <header class="card-header p-l-15">
+                        <p class="card-header-title">
+                            <span class="is-flex align-items-center">
+                                <figure class="image is-32x32 m-r-5">
+                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                </figure>
+                                <span>
+                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                        (edited)</p>
+                                </span>
+                            </span>
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">This
+                                is a
+                                selected note tag that
+                                could be like a
+                                sentence</p>
+                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">This
+                                is a
+                                selected note tag </p>
+                            <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
+                                manually entered by
+                                Nathaniel. You can
+                                mention people to give
+                                them a notification <a>@Julie Thomas</a></p>
+                        </div>
+                    </div>
+                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                        <button class="button is-outlined is-primary is-size-7 m-l-30">Call Back #: 123 1234
+                            1234</button>
+                        <button class="button is-outlined is-primary is-size-7 m-l-20">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button>
+
+                    </footer>
+                </div>
+                <div class="card m-t-10">
+                    <div class="ribbon has-text-white has-background-orange" matTooltip="Notification"
+                        [matTooltipPosition]="'above'">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <header class="card-header p-l-15">
+                        <p class="card-header-title">
+                            <span class="is-flex align-items-center">
+                                <figure class="image is-32x32 m-r-5">
+                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                </figure>
+                                <span>
+                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                        (edited)</p>
+                                </span>
+                            </span>
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options" matTooltip="Status update"
+                            [matTooltipPosition]="'above'">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-grey has-text-weight-medium ">New reminder created for
+                                11/01/2019
+                            </p>
+                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
+                                Follow up call in two days</p>
+                            <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
+                                manually entered by
+                                Nathaniel.</p>
+                        </div>
+                    </div>
+                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                        <button class="button is-outlined is-primary is-size-7 m-l-30">Call Back #: 123 1234
+                            1234</button>
+                        <!-- <button class="button is-outlined is-primary is-size-7 m-l-5">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button> -->
+                    </footer>
+                </div>
+
+                <div class="card m-t-10">
+                    <div class="ribbon has-text-white has-background-lime" matTooltip="Status update"
+                        [matTooltipPosition]="'above'">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <header class="card-header p-l-15">
+                        <p class="card-header-title">
+                            <span class="is-flex align-items-center">
+                                <figure class="image is-32x32 m-r-5">
+                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                </figure>
+                                <span>
+                                    <p class="has-text-weight-medium">Carouline Sanders</p>
+                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                        (edited)</p>
+                                </span>
+                            </span>
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-grey has-text-weight-medium ">Updated Status from:
+                            </p>
+                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-dark has-text-weight-medium is-size-7">
+                                Recovery Completed . Recovery Guarantee to Pay</p>
+                            <p class="has-text-grey has-text-weight-medium ">To:
+                            </p>
+                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-dark has-text-weight-medium is-size-7">
+                                Recovery Completed . Recovery Guarantee to Pay</p>
+
+                        </div>
+                    </div>
+                    <!-- <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20"> -->
+                    <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
+                            1234</button> -->
+                    <!-- <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button> -->
+
+                    <!-- </footer> -->
+                </div>
+                <div class="card m-t-10">
+                    <div class="ribbon has-text-white has-background-cyan" matTooltip="Faxed"
+                        [matTooltipPosition]="'above'">
+                        <i class="fas fa-tty"></i>
+                    </div>
+                    <header class="card-header p-l-15">
+                        <p class="card-header-title">
+                            <span class="is-flex align-items-center">
+                                <figure class="image is-32x32 m-r-5">
+                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                </figure>
+                                <span>
+                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                        (edited)</p>
+                                </span>
+                            </span>
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-grey has-text-weight-medium ">Sent Fax</p>
+                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
+                                This is some fax tag that was selected</p>
+                            <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
+                                manually entered by
+                                Nathaniel.</p>
+                        </div>
+                    </div>
+                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                        <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
+                            1234</button> -->
+                        <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button>
+
+                    </footer>
+                </div>
+                <div class="card m-t-10" style="position: relative">
+                    <div class="ribbon has-text-white has-background-purple" matTooltip="Note"
+                        [matTooltipPosition]="'above'">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <header class="card-header p-l-15">
+                        <p class="card-header-title">
+                            <span class="is-flex align-items-center">
+                                <figure class="image is-32x32 m-r-5">
+                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                </figure>
+                                <span>
+                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                        (edited)</p>
+                                </span>
+                            </span>
+                        </p>
+                        <a href="#" class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                            </span>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="has-text-dark has-text-weight-medium is-size-7">Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Ad architecto eaque id doloremque similique perspiciatis
+                                ipsa impedit, asperiores deleniti! Quidem?</p>
+                        </div>
+                    </div>
+                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                        <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
+                            1234</button> -->
+                        <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button>
+
+                    </footer>
                 </div>
             </section>
         </div>
@@ -351,7 +581,7 @@
 <div class="modal" [ngClass]="{'is-active': moreInfoModalDisplay===true}">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <button class="button modalCloseButton roundButton has-text-grey is-white is-size-7"
+        <button class="button modalCloseButton roundButton modifiedSmallRoundedButton has-text-grey is-white is-size-7"
             (click)="closeMoreInfo()"><i class="fa fa-times"></i></button>
         <div class="box p-r-50 p-l-50">
             <p class="has-text-dark has-text-weight-bold is-size-5 p-b-20 p-t-10 has-text-centered">Claim Details</p>
@@ -378,7 +608,7 @@
 <div class="modal" [ngClass]="{'is-active': reassignModalDisplay===true}">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <button class="button modalCloseButton roundButton has-text-grey is-white is-size-7"
+        <button class="button modalCloseButton roundButton modifiedSmallRoundedButton has-text-grey is-white is-size-7"
             (click)="closeReassignModal()"><i class="fa fa-times"></i></button>
         <div class="box p-r-50 p-l-50">
             <p class="has-text-dark has-text-weight-bold is-size-5 p-b-20 p-t-10 has-text-centered">Reassign Edit</p>
