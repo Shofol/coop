@@ -1,0 +1,7 @@
+<router-outlet></router-outlet>
+
+<div class="load-spinner" 
+    *ngIf="(loading$ | async)"
+    [@simpleFadeAnimation]="'in'">
+    <div class="lds-facebook"><div></div><div></div><div></div></div>
+</div>

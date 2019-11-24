@@ -16,5 +16,5 @@ const userReducer = createReducer(
     on(loadUser, (state, { payload }) => ({ ...state, user: payload }))
 );
 export function reducer(state: UserState | undefined, action: Action) {
-  return userReducer(state, action);
+  	return userReducer(state, action);
 }

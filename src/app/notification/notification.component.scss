@@ -1,0 +1,21 @@
+.appNotification:not(:last-child) {
+    border-bottom: 1px solid #e6e6e6;
+  }
+  
+  .notificationIcon {
+    position: relative;
+  }
+  
+  .noitificationNumberIcon {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    background: #cc3c35;
+    border: 1px solid white;
+    color: white;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    text-align: center;
+  }

@@ -1,3 +1,5 @@
+# ClaimAI_UI
+
 First install node, npm ( brew install node ) and angular cli ( https://cli.angular.io/ )
 
 ## Development server

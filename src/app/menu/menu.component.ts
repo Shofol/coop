@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SidebarService } from '../_services/sidebar.service';
+import { AuthenticationService } from '@/_services';
 
 @Component({
 	selector: 'app-menu',
@@ -16,7 +17,8 @@ export class MenuComponent {
 
 	}
 	constructor(
-		private _sidebarService: SidebarService) {
+		private _sidebarService: SidebarService,
+		public authenticationService: AuthenticationService) {
 		// this.toggle = true;
 	}
 

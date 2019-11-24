@@ -4,7 +4,10 @@
             matTooltip="Notifications" [matTooltipPosition]="'above'">
             <span>
                 <i class="fas fa-bell has-text-grey notificationIcon"></i>
-                <span class="noitificationNumberIcon" *ngIf="notifications.length>0">{{notifications.length}}</span>
+                <span class="noitificationNumberIcon" 
+                     *ngIf="(notifications$ | async)?.length > 0">
+                     {{(notifications$ | async)?.length}}
+                </span>
             </span>
         </a>
     </div>
@@ -14,16 +17,23 @@
                 <p class="is-size-5">Notifications</p>
                 <ul>
                     <li class="is-flex p-t-10 p-b-10 appNotification has-text-dark"
-                        *ngFor="let notification of notifications">
-                        <span>{{notification.msg}}</span>
+                        *ngFor="let notification of (notifications$ | async) | slice:0:5; let i=index">
+                        <span>{{notification.details}}</span>
                         <span><button class="button button is-info is-normal is-size-7">Check it out</button></span>
                         <hr class="dropdown-divider">
 
                     </li>
                 </ul>
                 <div class="has-text-centered p-t-20 p-b-10">
-                    <a class="has-text-grey" style="text-decoration: underline;">
+                    <a *ngIf="(notifications$ | async)?.length > 0" 
+                        class="has-text-grey" 
+                        style="text-decoration: underline;">
                         View all notifications
+                    </a>
+                    <a *ngIf="(notifications$ | async)?.length == 0" 
+                        class="has-text-grey" 
+                        style="text-decoration: underline;">
+                        No notfications found
                     </a>
                 </div>
             </div>

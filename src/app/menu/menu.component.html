@@ -18,6 +18,7 @@
         </li>
         <li><a [routerLink]="['/resources']" routerLinkActive="is-active" class="p-t-10 p-b-10 p-l-30">RESOURCES</a>
         </li>
+        <li><a *ngIf="authenticationService.isLoggedIn()" (click)="authenticationService.logout()" class="p-t-10 p-b-10 p-l-30">LOGOUT</a></li> 
     </ul>
 
     <ul *ngIf="!toggle" class="has-text-centered p-t-20">
@@ -33,6 +34,12 @@
         <li><a [routerLink]="['/resources']" routerLinkActive="smallSidebarMenuActive" matTooltip="Account"
                 [matTooltipPosition]="'right'">
                 <i class="fas fa-user has-text-grey p-t-10 p-b-10 "></i></a>
+        </li>
+        <li><a *ngIf="authenticationService.isLoggedIn()" 
+                (click)="authenticationService.logout()"
+                matTooltip="Logout"
+                [matTooltipPosition]="'right'">
+                <i class="fas fa-circle-notch has-text-grey p-t-10 p-b-10 "></i></a>
         </li>
         <!-- p-l-15
         p-l-15
