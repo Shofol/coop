@@ -7,8 +7,9 @@
 .smallMenu {
   max-width: 86px !important;
   display: flex;
+  min-width: 86px !important;
 }
 .smallMenuItem {
-  padding-left: 0 !important;
+  /* padding-left: 0 !important; */
   padding-right: 0 !important;
 }

@@ -1,626 +1,644 @@
-<section class="section header" [ngClass]="{ 'largeMenu': largeMenu}">
-    <div class="columns is-multiline">
-        <div class="column is-flex align-items-center is-one-third">
-            <button class="button is-white roundButton modifiedRoundedButton" (click)="back()"><i
-                    class="fa fa-times"></i></button>
-            <p class="p-l-10 is-size-4 has-text-dark">Claim #{{claimId}}</p>
+<div [ngClass]="{ 'largeMenu': largeMenu}" class="containerBody">
+    <section class="section header">
+        <div class="columns is-multiline">
+            <div class="column is-flex align-items-center is-one-third">
+                <button class="button is-white roundButton modifiedRoundedButton" (click)="back()"><i
+                        class="fa fa-times"></i></button>
+                <p class="p-l-10 is-size-4 has-text-dark">Claim #{{claimId}}</p>
 
-        </div>
-        <div class="column is-flex flex-wrap justify-content-end is-multiline">
-            <div class="dropdown is-hoverable m-r-10">
-                <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" style="height: 100%;">
-                        <span class="is-flex">
-                            <figure class="image is-48x48">
-                                <img src="../../assets/images/dollar.png" alt="dollar">
-                            </figure>
-                            <div class="has-text-left p-l-10 p-r-10 is-size-6">
-                                <p>Current Stauts</p>
-                                <p>Recovery Completed <span>.</span>Recovered Guarantee to pay</p>
+            </div>
+            <div class="column is-flex flex-wrap justify-content-end is-multiline headerMenu">
+                <div class="dropdown is-hoverable m-r-10 recover">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2"
+                            style="height: 100%;">
+                            <span class="is-flex">
+                                <figure class="image is-48x48">
+                                    <img src="../../assets/images/dollar.png" alt="dollar">
+                                </figure>
+                                <div class="has-text-left p-l-10 p-r-10 is-size-6">
+                                    <p>Current Stauts</p>
+                                    <p>Recovery Completed <span>.</span>Recovered Guarantee to pay</p>
+                                </div>
+                            </span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu2" role="menu" style="width:100%">
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <div class="control has-icons-right">
+                                    <input class="input" type="text" placeholder="Search...">
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                                <mat-accordion>
+                                    <mat-expansion-panel [expanded]="true">
+                                        <mat-expansion-panel-header class="p-l-5 p-r-5">
+                                            <mat-panel-title class="is-flex align-items-center m-t-5 m-b-5">
+                                                <figure class="image is-48x48">
+                                                    <img src="../../assets/images/dollarSearch.png" alt="dollarSearch">
+                                                </figure>
+                                                <p class="p-l-5">FTM Review</p>
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <mat-panel-description>
+                                            <ul class="menu-list p-t-10 has-text-dark has-text-weight-medium p-l-25"
+                                                style="width:100%">
+                                                <li *ngFor="let result of searchedResults; index as i"
+                                                    class="m-b-10 searchedResults">
+                                                    <p class="p-b-10">
+                                                        {{result}}</p>
+                                                </li>
+                                            </ul>
+                                        </mat-panel-description>
+                                    </mat-expansion-panel>
+                                </mat-accordion>
                             </div>
-                        </span>
-                        <span class="icon is-small">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu2" role="menu" style="width:100%">
-                    <div class="dropdown-content">
-                        <div class="dropdown-item">
-                            <div class="control has-icons-right">
-                                <input class="input" type="text" placeholder="Search...">
-                                <span class="icon is-small is-right">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </div>
-                            <mat-accordion>
-                                <mat-expansion-panel [expanded]="true">
-                                    <mat-expansion-panel-header class="p-l-5 p-r-5">
-                                        <mat-panel-title class="is-flex align-items-center m-t-5 m-b-5">
-                                            <figure class="image is-48x48">
-                                                <img src="../../assets/images/dollarSearch.png" alt="dollarSearch">
-                                            </figure>
-                                            <p class="p-l-5">FTM Review</p>
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <mat-panel-description>
-                                        <ul class="menu-list p-t-10 has-text-dark has-text-weight-medium p-l-25"
-                                            style="width:100%">
-                                            <li *ngFor="let result of searchedResults; index as i"
-                                                class="m-b-10 searchedResults">
-                                                <p class="p-b-10">
-                                                    {{result}}</p>
-                                            </li>
-                                        </ul>
-                                    </mat-panel-description>
-                                </mat-expansion-panel>
-                            </mat-accordion>
                         </div>
                     </div>
                 </div>
+                <div class="calendar">
+                    <p style="margin-bottom: -40px;">Expected Payment Date</p>
+                    <br>
+                    <mat-form-field class="example-full-width" floatLabel="never">
+                        <input matInput [matDatepicker]="picker" placeholder="Select date">
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                            <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker color="red"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <span class="is-flex align-items-center">
+                    <app-notification></app-notification>
+                </span>
             </div>
-            <div class="calendar">
-                <p style="margin-bottom: -40px;">Expected Payment Date</p>
-                <br>
-                <mat-form-field class="example-full-width" floatLabel="never">
-                    <input matInput [matDatepicker]="picker" placeholder="Select date">
-                    <mat-datepicker-toggle matSuffix [for]="picker">
-                        <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #picker color="red"></mat-datepicker>
-                </mat-form-field>
-            </div>
-            <span class="is-flex align-items-center">
-                <app-notification></app-notification>
+        </div>
+        <div class="is-flex space-between p-t-10">
+            <span>
+                <p class="has-text-dark">Total Amount</p>
+                <p class="has-text-light-gray">$100,120.30</p>
+            </span>
+            <span>
+                <p class="has-text-dark">Case ID #</p>
+                <p class="has-text-light-gray">1234123</p>
+            </span>
+            <span>
+                <p class="has-text-dark">Tax ID #</p>
+                <p class="has-text-light-gray">234123</p>
+            </span>
+            <span>
+                <p class="has-text-dark">Provider Name</p>
+                <p class="has-text-light-gray">Name goes here</p>
+            </span>
+            <span>
+                <p class="has-text-dark">Client Name</p>
+                <p class="has-text-light-gray">Name goes here</p>
+            </span>
+            <span>
+                <p class="has-text-dark">Days active</p>
+                <p class="has-text-light-gray">12</p>
+            </span>
+            <span>
+                <p class="has-text-dark">Last activity</p>
+                <p class="has-text-light-gray">Rodgers added a notification</p>
+            </span>
+            <span>
+                <button class="button is-medium is-primary  p-l-20 p-r-20"><span class="is-size-6">Call
+                        billing</span></button>
             </span>
         </div>
-    </div>
-    <div class="is-flex space-between p-t-10">
-        <span>
-            <p class="has-text-dark">Total Amount</p>
-            <p class="has-text-light-gray">$100,120.30</p>
-        </span>
-        <span>
-            <p class="has-text-dark">Case ID #</p>
-            <p class="has-text-light-gray">1234123</p>
-        </span>
-        <span>
-            <p class="has-text-dark">Tax ID #</p>
-            <p class="has-text-light-gray">234123</p>
-        </span>
-        <span>
-            <p class="has-text-dark">Provider Name</p>
-            <p class="has-text-light-gray">Name goes here</p>
-        </span>
-        <span>
-            <p class="has-text-dark">Client Name</p>
-            <p class="has-text-light-gray">Name goes here</p>
-        </span>
-        <span>
-            <p class="has-text-dark">Days active</p>
-            <p class="has-text-light-gray">12</p>
-        </span>
-        <span>
-            <p class="has-text-dark">Last activity</p>
-            <p class="has-text-light-gray">Rodgers added a notification</p>
-        </span>
-        <span>
-            <button class="button is-medium is-primary  p-l-20 p-r-20"><span class="is-size-6">Call
-                    billing</span></button>
-        </span>
-    </div>
-</section>
+    </section>
 
-<section class="section p-t-20 p-b-0">
-    <div class="columns">
-        <div class="column is-three-fifths">
-            <div class="tabs">
-                <ul class="is-uppercase">
-                    <li [ngClass]="{'is-active' : activeTab === 'overview'}"><a (click)="changeTab($event)"
-                            id="overview">Overview</a></li>
-                    <li [ngClass]="{'is-active' : activeTab === 'detail'}"><a (click)="changeTab($event)"
-                            id="detail">Claim Details</a>
-                    </li>
-                    <li [ngClass]="{'is-active' : activeTab === 'documents'}"><a (click)="changeTab($event)"
-                            id="documents">Documents</a>
-                    </li>
-                    <li [ngClass]="{'is-active' : activeTab === 'resources'}"><a (click)="changeTab($event)"
-                            id="resources">Resources</a>
-                    </li>
-                </ul>
-            </div>
-            <section class="section p-t-0">
-                <span class="is-flex p-b-20">
-                    <a class="p-r-10 has-text-grey">Claim</a>
-                    <a class="p-r-10 has-text-grey">Emaoyee</a>
-                    <a class="p-r-10 has-text-grey">Patient</a>
-                    <a class="p-r-10 has-text-grey">Claim provider</a>
-                    <a class="p-r-10 has-text-grey">Batch Info</a>
-
-                </span>
-                <div>
-                    <h2>Claim Info</h2>
-                    <p>Last updated 7/12/2019</p>
-                    <div class="is-flex space-between p-t-20 p-b-20">
-                        <span>
-                            <p class="has-text-dark has-text-weight-bold">Total Amount</p>
-                            <p class="has-text-light-gray">$100,120.30</p>
-                        </span>
-                        <span>
-                            <p class="has-text-dark has-text-weight-bold">COB Adjustment</p>
-                            <p class="has-text-light-gray">$100,120.30</p>
-                        </span>
-                        <span>
-                            <p class="has-text-dark has-text-weight-bold">Total Amount</p>
-                            <p class="has-text-light-gray">$100,120.30</p>
-                        </span>
-                        <span>
-                            <p class="has-text-dark has-text-weight-bold">Copay</p>
-                            <p class="has-text-light-gray">$100,120.30</p>
-                        </span>
-                        <span>
-                            <p class="has-text-dark has-text-weight-bold">Overpaid by</p>
-                            <p class="has-text-danger has-text-weight-bold">$100,120.30</p>
-                        </span>
-                    </div>
+    <section class="section p-t-20 p-b-0">
+        <div class="columns">
+            <div class="column is-three-fifths">
+                <div class="tabs">
+                    <ul class="is-uppercase">
+                        <li [ngClass]="{'is-active' : activeTab === 'overview'}"><a (click)="changeTab($event)"
+                                id="overview">Overview</a></li>
+                        <li [ngClass]="{'is-active' : activeTab === 'detail'}"><a (click)="changeTab($event)"
+                                id="detail">Claim Details</a>
+                        </li>
+                        <li [ngClass]="{'is-active' : activeTab === 'documents'}"><a (click)="changeTab($event)"
+                                id="documents">Documents</a>
+                        </li>
+                        <li [ngClass]="{'is-active' : activeTab === 'resources'}"><a (click)="changeTab($event)"
+                                id="resources">Resources</a>
+                        </li>
+                    </ul>
                 </div>
-                <div>
-                    <h2 class="p-b-10">Summary</h2>
-                    <div class="tabs">
-                        <ul class="is-uppercase">
-                            <li [ngClass]="{'is-active' : summaryActiveTab === 'assigned'}"><a
-                                    (click)="changeSummaryTab($event)" id="assigned">Assigned to
-                                    me</a></li>
-                            <li [ngClass]="{'is-active' : summaryActiveTab === 'completed'}"><a
-                                    (click)="changeSummaryTab($event)" id="completed">Completed</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div *ngIf="summaryActiveTab === 'assigned'">
-                        <ngx-datatable class="bootstrap m-l-20 m-r-20" [rows]="rows" [columnMode]="ColumnMode.force"
-                            [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10" [selected]="selected"
-                            [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)"
-                            (select)="onSelect($event)">
-                            <ngx-datatable-column name="No" [width]="20"></ngx-datatable-column>
-                            <ngx-datatable-column name="Overview"></ngx-datatable-column>
-                            <ngx-datatable-column>
-                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                                    <a class=" ngxColumnElementShowOnHover has-text-centered"
-                                        (click)="showMoreInfo(row)">more
-                                        info...</a>
-                                </ng-template>
-                            </ngx-datatable-column>
-                        </ngx-datatable>
-                    </div>
+                <section class="section p-t-0">
+                    <span class="is-flex p-b-20">
+                        <a class="p-r-10 has-text-grey">Claim</a>
+                        <a class="p-r-10 has-text-grey">Emaoyee</a>
+                        <a class="p-r-10 has-text-grey">Patient</a>
+                        <a class="p-r-10 has-text-grey">Claim provider</a>
+                        <a class="p-r-10 has-text-grey">Batch Info</a>
 
-                    <div *ngIf="summaryActiveTab === 'completed'">
-                        <ngx-datatable class="bootstrap m-l-20 m-r-20" [rows]="rows" [columnMode]="ColumnMode.force"
-                            [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10" [selected]="selected"
-                            [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)"
-                            (select)="onSelect($event)">
-                            <ngx-datatable-column name="No" [width]="10"></ngx-datatable-column>
-                            <ngx-datatable-column name="Assigned">
-                                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                                    <div class="dropdown is-hoverable is-left">
-                                        <div class="dropdown-trigger">
-                                            <button class="button " aria-haspopup="true" aria-controls="dropdown-menu2"
-                                                style="height: 100%;">
-                                                <div
-                                                    class="has-text-left has-text-dark has-text-weight-bold p-r-10 is-size-7">
-                                                    <span class="is-flex align-items-center">
-                                                        <figure class="image is-32x32 m-r-5">
-                                                            <img class="is-rounded"
-                                                                src="../../assets/images/person_1.jpg">
-                                                        </figure>
-                                                        <p>{{value}}</p>
-                                                    </span>
-                                                </div>
-                                                <span class="icon is-small">
-                                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                                </span>
-                                            </button>
-                                        </div>
-                                        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                                            <div class="dropdown-content " style="width: 18rem;">
-                                                <div class="dropdown-item p-l-15 p-r-15 p-t-15 has-text-dark">
-                                                    <div class="control has-icons-right">
-                                                        <input class="input" type="text"
-                                                            placeholder="Search by name...">
-                                                        <span class="icon is-small is-right">
-                                                            <i class="fas fa-search"></i>
+                    </span>
+                    <div>
+                        <h2>Claim Info</h2>
+                        <p>Last updated 7/12/2019</p>
+                        <div class="is-flex space-between p-t-20 p-b-20">
+                            <span>
+                                <p class="has-text-dark has-text-weight-bold">Total Amount</p>
+                                <p class="has-text-light-gray">$100,120.30</p>
+                            </span>
+                            <span>
+                                <p class="has-text-dark has-text-weight-bold">COB Adjustment</p>
+                                <p class="has-text-light-gray">$100,120.30</p>
+                            </span>
+                            <span>
+                                <p class="has-text-dark has-text-weight-bold">Total Amount</p>
+                                <p class="has-text-light-gray">$100,120.30</p>
+                            </span>
+                            <span>
+                                <p class="has-text-dark has-text-weight-bold">Copay</p>
+                                <p class="has-text-light-gray">$100,120.30</p>
+                            </span>
+                            <span>
+                                <p class="has-text-dark has-text-weight-bold">Overpaid by</p>
+                                <p class="has-text-danger has-text-weight-bold">$100,120.30</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="p-b-10">Summary</h2>
+                        <div class="tabs">
+                            <ul class="is-uppercase">
+                                <li [ngClass]="{'is-active' : summaryActiveTab === 'assigned'}"><a
+                                        (click)="changeSummaryTab($event)" id="assigned">Assigned to
+                                        me</a></li>
+                                <li [ngClass]="{'is-active' : summaryActiveTab === 'completed'}"><a
+                                        (click)="changeSummaryTab($event)" id="completed">Completed</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngIf="summaryActiveTab === 'assigned'">
+                            <ngx-datatable class="bootstrap m-l-20 m-r-20" [rows]="rows" [columnMode]="ColumnMode.force"
+                                [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
+                                [selected]="selected" [selectionType]="SelectionType.checkbox"
+                                (activate)="onActivate($event)" (select)="onSelect($event)">
+                                <ngx-datatable-column name="No" [width]="20"></ngx-datatable-column>
+                                <ngx-datatable-column name="Overview"></ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <a class=" ngxColumnElementShowOnHover has-text-centered"
+                                            (click)="showMoreInfo(row)">more
+                                            info...</a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+
+                        <div *ngIf="summaryActiveTab === 'completed'">
+                            <ngx-datatable class="bootstrap m-l-20 m-r-20" [rows]="rows" [columnMode]="ColumnMode.force"
+                                [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10"
+                                [selected]="selected" [selectionType]="SelectionType.checkbox"
+                                (activate)="onActivate($event)" (select)="onSelect($event)">
+                                <ngx-datatable-column name="No" [width]="10"></ngx-datatable-column>
+                                <ngx-datatable-column name="Assigned">
+                                    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                                        <div class="dropdown is-hoverable is-left">
+                                            <div class="dropdown-trigger">
+                                                <button class="button " aria-haspopup="true"
+                                                    aria-controls="dropdown-menu2" style="height: 100%;">
+                                                    <div
+                                                        class="has-text-left has-text-dark has-text-weight-bold p-r-10 is-size-7">
+                                                        <span class="is-flex align-items-center">
+                                                            <figure class="image is-32x32 m-r-5">
+                                                                <img class="is-rounded"
+                                                                    src="../../assets/images/person_1.jpg">
+                                                            </figure>
+                                                            <p>{{value}}</p>
                                                         </span>
                                                     </div>
-                                                    <ul>
-                                                        <li class="is-flex p-t-10 p-b-10 align-items-center appNotification has-text-dark space-between"
-                                                            *ngFor="let person of assignes">
-                                                            <span class="is-flex align-items-center">
-                                                                <figure class="image is-32x32 m-r-5">
-                                                                    <img class="is-rounded"
-                                                                        src="../../assets/images/person_1.jpg">
-                                                                </figure>
-                                                                <span>
-                                                                    <p class="has-text-dark has-text-weight-bold">
-                                                                        {{person.name}}</p>
-                                                                    <span class="is-flex is-size-7 has-text-grey">
-                                                                        <p *ngFor="let issue of person.issues">{{issue}}
-                                                                        </p>
+                                                    <span class="icon is-small">
+                                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                                                <div class="dropdown-content " style="width: 18rem;">
+                                                    <div class="dropdown-item p-l-15 p-r-15 p-t-15 has-text-dark">
+                                                        <div class="control has-icons-right">
+                                                            <input class="input" type="text"
+                                                                placeholder="Search by name...">
+                                                            <span class="icon is-small is-right">
+                                                                <i class="fas fa-search"></i>
+                                                            </span>
+                                                        </div>
+                                                        <ul>
+                                                            <li class="is-flex p-t-10 p-b-10 align-items-center appNotification has-text-dark space-between"
+                                                                *ngFor="let person of assignes">
+                                                                <span class="is-flex align-items-center">
+                                                                    <figure class="image is-32x32 m-r-5">
+                                                                        <img class="is-rounded"
+                                                                            src="../../assets/images/person_1.jpg">
+                                                                    </figure>
+                                                                    <span>
+                                                                        <p class="has-text-dark has-text-weight-bold">
+                                                                            {{person.name}}</p>
+                                                                        <span class="is-flex is-size-7 has-text-grey">
+                                                                            <p *ngFor="let issue of person.issues">
+                                                                                {{issue}}
+                                                                            </p>
+                                                                        </span>
                                                                     </span>
                                                                 </span>
-                                                            </span>
 
-                                                            <span>
-                                                                <button *ngIf="person.name !== value"
-                                                                    class="button button is-info is-medium is-size-7"
-                                                                    (click)="showReassignModal(person)">Assign
-                                                                </button>
-                                                                <p *ngIf="person.name === value"
-                                                                    class="has-text-centered has-text-grey ">
-                                                                    Assigned</p>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
+                                                                <span>
+                                                                    <button *ngIf="person.name !== value"
+                                                                        class="button button is-info is-medium is-size-7"
+                                                                        (click)="showReassignModal(person)">Assign
+                                                                    </button>
+                                                                    <p *ngIf="person.name === value"
+                                                                        class="has-text-centered has-text-grey ">
+                                                                        Assigned</p>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
                                                 </div>
-
                                             </div>
                                         </div>
-                                    </div>
-                                </ng-template>
-                            </ngx-datatable-column>
+                                    </ng-template>
+                                </ngx-datatable-column>
 
-                            <ngx-datatable-column name="Overview"></ngx-datatable-column>
-                        </ngx-datatable>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="column claimAction p-r-0">
-            <section class="section">
-                <div class="is-flex space-between">
-                    <div class="dropdown is-hoverable is-right">
-                        <div class="dropdown-trigger">
-                            <button class="button is-white" aria-haspopup="true" aria-controls="dropdown-menu2"
-                                style="height: 100%;">
-                                <div class="has-text-left has-text-dark has-text-weight-bold p-r-10 is-size-7">
-                                    <p>Call Billing</p>
-                                    <p>123-123-1234</p>
-                                </div>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                            </button>
+                                <ngx-datatable-column name="Overview"></ngx-datatable-column>
+                            </ngx-datatable>
                         </div>
-                        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                            <div class="dropdown-content " style="width: 18rem;">
-                                <div class="dropdown-item p-l-15 p-r-15 p-t-15 has-text-dark">
-                                    <ul>
-                                        <li class="is-flex p-t-10 p-b-10 align-items-center appNotification has-text-dark space-between"
-                                            *ngFor="let contact of contacts">
-                                            <span class="m-r-10 is-size-7">
-                                                <p class="has-text-dark has-text-weight-bold">{{contact.name}}</p>
-                                                <p class="has-text-grey-light">{{contact.number}}</p>
-                                            </span>
-                                            <span>
-                                                <button class="button button is-info is-medium is-size-7">Call
-                                                    now</button>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                    <div class="is-flex p-t-10 p-b-10">
-                                        <input class="input is-size-7 m-r-5" type="text"
-                                            placeholder="Add number here...">
-                                        <span>
-                                            <button class="button button is-info is-medium is-size-7" disabled>Call
-                                                now
-                                            </button>
-                                        </span>
+                    </div>
+                </section>
+            </div>
+            <div class="column claimAction p-r-0">
+                <section class="section">
+                    <div class="is-flex space-between flex-wrap">
+                        <div class="dropdown is-hoverable is-right m-t-5">
+                            <div class="dropdown-trigger">
+                                <button class="button is-white" aria-haspopup="true" aria-controls="dropdown-menu2"
+                                    style="height: 100%;">
+                                    <div class="has-text-left has-text-dark has-text-weight-bold p-r-10 is-size-7">
+                                        <p>Call Billing</p>
+                                        <p>123-123-1234</p>
                                     </div>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                                <div class="dropdown-content " style="width: 18rem;">
+                                    <div class="dropdown-item p-l-15 p-r-15 p-t-15 has-text-dark">
+                                        <ul>
+                                            <li class="is-flex p-t-10 p-b-10 align-items-center appNotification has-text-dark space-between"
+                                                *ngFor="let contact of contacts">
+                                                <span class="m-r-10 is-size-7">
+                                                    <p class="has-text-dark has-text-weight-bold">{{contact.name}}</p>
+                                                    <p class="has-text-grey-light">{{contact.number}}</p>
+                                                </span>
+                                                <span>
+                                                    <button class="button button is-info is-medium is-size-7">Call
+                                                        now</button>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <div class="is-flex p-t-10 p-b-10">
+                                            <input class="input is-size-7 m-r-5" type="text"
+                                                placeholder="Add number here...">
+                                            <span>
+                                                <button class="button button is-info is-medium is-size-7" disabled>Call
+                                                    now
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+
                                 </div>
+                            </div>
+                        </div>
+                        <a class="button is-medium is-white m-t-5" aria-haspopup="true" aria-controls="dropdown-menu2"
+                            matTooltip="Account" [matTooltipPosition]="'above'">
+                            <!-- <span class="tooltiptext is-size-7">Account</span> -->
+                            <span>
+                                <i class="fas fa-tty has-text-grey"></i>
+                            </span>
+                        </a>
+                        <a class="button is-medium is-white  m-t-5" aria-haspopup="true" aria-controls="dropdown-menu2"
+                            matTooltip="Email" [matTooltipPosition]="'above'">
+                            <!-- <span class="tooltiptext is-size-7">Email</span> -->
+
+                            <span>
+                                <i class="fas fa-envelope has-text-grey"></i>
+                            </span>
+                        </a>
+                        <a class="button is-medium is-white m-t-5" aria-haspopup="true" aria-controls="dropdown-menu2"
+                            matTooltip="Add note" [matTooltipPosition]="'above'">
+                            <!-- <span class="tooltiptext is-size-7">Add Note</span> -->
+
+                            <span>
+                                <i class="fas fa-sticky-note has-text-grey"></i>
+                            </span>
+                        </a>
+                        <a class="button is-medium is-white m-t-5" aria-haspopup="true" aria-controls="dropdown-menu2"
+                            matTooltip="Notification" [matTooltipPosition]="'above'">
+                            <!-- <span class="tooltiptext is-size-7">Notifications</span> -->
+
+                            <span>
+                                <i class="fas fa-bell has-text-grey"></i>
+                            </span>
+                        </a>
+                    </div>
+                </section>
+                <section class="section p-t-0">
+                    <div class="card ">
+                        <div class="ribbon has-text-white has-background-cyan" matTooltip="Phone Call"
+                            [matTooltipPosition]="'above'">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <header class="card-header p-l-15">
+                            <p class="card-header-title">
+                                <span class="is-flex align-items-center">
+                                    <figure class="image is-32x32 m-r-5">
+                                        <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                    </figure>
+                                    <span>
+                                        <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                        <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                            (edited)</p>
+                                    </span>
+                                </span>
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                                </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
+                                    This
+                                    is a
+                                    selected note tag that
+                                    could be like a
+                                    sentence</p>
+                                <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
+                                    This
+                                    is a
+                                    selected note tag </p>
+                                <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
+                                    manually entered by
+                                    Nathaniel. You can
+                                    mention people to give
+                                    them a notification <a>@Julie Thomas</a></p>
+                            </div>
+                        </div>
+                        <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                            <button class="button is-outlined is-primary is-size-7 m-l-30">Call Back #: 123 1234
+                                1234</button>
+                            <button class="button is-outlined is-primary is-size-7 m-l-15 m-r-10">Add Reminder<span
+                                    class="m-l-10"><i class="fas fa-bell"></i></span></button>
+
+                        </footer>
+                    </div>
+                    <div class="card m-t-10">
+                        <div class="ribbon has-text-white has-background-orange" matTooltip="Notification"
+                            [matTooltipPosition]="'above'">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <header class="card-header p-l-15">
+                            <p class="card-header-title">
+                                <span class="is-flex align-items-center">
+                                    <figure class="image is-32x32 m-r-5">
+                                        <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                    </figure>
+                                    <span>
+                                        <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                        <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                            (edited)</p>
+                                    </span>
+                                </span>
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="more options" matTooltip="Status update"
+                                [matTooltipPosition]="'above'">
+                                <span class="icon">
+                                    <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                                </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="has-text-grey has-text-weight-medium ">New reminder created for
+                                    11/01/2019
+                                </p>
+                                <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
+                                    Follow up call in two days</p>
+                                <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
+                                    manually entered by
+                                    Nathaniel.</p>
+                            </div>
+                        </div>
+                        <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                            <button class="button is-outlined is-primary is-size-7 m-l-30">Call Back #: 123 1234
+                                1234</button>
+                            <!-- <button class="button is-outlined is-primary is-size-7 m-l-5">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button> -->
+                        </footer>
+                    </div>
+
+                    <div class="card m-t-10">
+                        <div class="ribbon has-text-white has-background-lime" matTooltip="Status update"
+                            [matTooltipPosition]="'above'">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <header class="card-header p-l-15">
+                            <p class="card-header-title">
+                                <span class="is-flex align-items-center">
+                                    <figure class="image is-32x32 m-r-5">
+                                        <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                    </figure>
+                                    <span>
+                                        <p class="has-text-weight-medium">Carouline Sanders</p>
+                                        <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                            (edited)</p>
+                                    </span>
+                                </span>
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                                </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="has-text-grey has-text-weight-medium ">Updated Status from:
+                                </p>
+                                <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-dark has-text-weight-medium is-size-7">
+                                    Recovery Completed . Recovery Guarantee to Pay</p>
+                                <p class="has-text-grey has-text-weight-medium ">To:
+                                </p>
+                                <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-dark has-text-weight-medium is-size-7">
+                                    Recovery Completed . Recovery Guarantee to Pay</p>
 
                             </div>
                         </div>
-                    </div>
-                    <a class="button is-medium is-white tooltip topTooltip" aria-haspopup="true"
-                        aria-controls="dropdown-menu2" matTooltip="Account" [matTooltipPosition]="'above'">
-                        <!-- <span class="tooltiptext is-size-7">Account</span> -->
-                        <span>
-                            <i class="fas fa-tty has-text-grey"></i>
-                        </span>
-                    </a>
-                    <a class="button is-medium is-white  tooltip topTooltip" aria-haspopup="true"
-                        aria-controls="dropdown-menu2" matTooltip="Email" [matTooltipPosition]="'above'">
-                        <!-- <span class="tooltiptext is-size-7">Email</span> -->
+                        <!-- <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20"> -->
+                        <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
+                            1234</button> -->
+                        <!-- <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
+                                class="m-l-10"><i class="fas fa-bell"></i></span></button> -->
 
-                        <span>
-                            <i class="fas fa-envelope has-text-grey"></i>
-                        </span>
-                    </a>
-                    <a class="button is-medium is-white tooltip topTooltip" aria-haspopup="true"
-                        aria-controls="dropdown-menu2" matTooltip="Add note" [matTooltipPosition]="'above'">
-                        <!-- <span class="tooltiptext is-size-7">Add Note</span> -->
-
-                        <span>
-                            <i class="fas fa-sticky-note has-text-grey"></i>
-                        </span>
-                    </a>
-                    <a class="button is-medium is-white tooltip topTooltip" aria-haspopup="true"
-                        aria-controls="dropdown-menu2" matTooltip="Notification" [matTooltipPosition]="'above'">
-                        <!-- <span class="tooltiptext is-size-7">Notifications</span> -->
-
-                        <span>
-                            <i class="fas fa-bell has-text-grey"></i>
-                        </span>
-                    </a>
-                </div>
-            </section>
-            <section class="section p-t-0">
-                <div class="card ">
-                    <div class="ribbon has-text-white has-background-cyan" matTooltip="Phone Call"
-                        [matTooltipPosition]="'above'">
-                        <i class="fas fa-phone-alt"></i>
+                        <!-- </footer> -->
                     </div>
-                    <header class="card-header p-l-15">
-                        <p class="card-header-title">
-                            <span class="is-flex align-items-center">
-                                <figure class="image is-32x32 m-r-5">
-                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
-                                </figure>
-                                <span>
-                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
-                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
-                                        (edited)</p>
-                                </span>
-                            </span>
-                        </p>
-                        <a href="#" class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
-                            </span>
-                        </a>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">This
-                                is a
-                                selected note tag that
-                                could be like a
-                                sentence</p>
-                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">This
-                                is a
-                                selected note tag </p>
-                            <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
-                                manually entered by
-                                Nathaniel. You can
-                                mention people to give
-                                them a notification <a>@Julie Thomas</a></p>
-                        </div>
-                    </div>
-                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
-                        <button class="button is-outlined is-primary is-size-7 m-l-30">Call Back #: 123 1234
-                            1234</button>
-                        <button class="button is-outlined is-primary is-size-7 m-l-20">Add Reminder<span
-                                class="m-l-10"><i class="fas fa-bell"></i></span></button>
-
-                    </footer>
-                </div>
-                <div class="card m-t-10">
-                    <div class="ribbon has-text-white has-background-orange" matTooltip="Notification"
-                        [matTooltipPosition]="'above'">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <header class="card-header p-l-15">
-                        <p class="card-header-title">
-                            <span class="is-flex align-items-center">
-                                <figure class="image is-32x32 m-r-5">
-                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
-                                </figure>
-                                <span>
-                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
-                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
-                                        (edited)</p>
-                                </span>
-                            </span>
-                        </p>
-                        <a href="#" class="card-header-icon" aria-label="more options" matTooltip="Status update"
+                    <div class="card m-t-10">
+                        <div class="ribbon has-text-white has-background-cyan" matTooltip="Faxed"
                             [matTooltipPosition]="'above'">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
-                            </span>
-                        </a>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <p class="has-text-grey has-text-weight-medium ">New reminder created for
-                                11/01/2019
-                            </p>
-                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
-                                Follow up call in two days</p>
-                            <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
-                                manually entered by
-                                Nathaniel.</p>
+                            <i class="fas fa-tty"></i>
                         </div>
-                    </div>
-                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
-                        <button class="button is-outlined is-primary is-size-7 m-l-30">Call Back #: 123 1234
-                            1234</button>
-                        <!-- <button class="button is-outlined is-primary is-size-7 m-l-5">Add Reminder<span
-                                class="m-l-10"><i class="fas fa-bell"></i></span></button> -->
-                    </footer>
-                </div>
-
-                <div class="card m-t-10">
-                    <div class="ribbon has-text-white has-background-lime" matTooltip="Status update"
-                        [matTooltipPosition]="'above'">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <header class="card-header p-l-15">
-                        <p class="card-header-title">
-                            <span class="is-flex align-items-center">
-                                <figure class="image is-32x32 m-r-5">
-                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
-                                </figure>
-                                <span>
-                                    <p class="has-text-weight-medium">Carouline Sanders</p>
-                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
-                                        (edited)</p>
+                        <header class="card-header p-l-15">
+                            <p class="card-header-title">
+                                <span class="is-flex align-items-center">
+                                    <figure class="image is-32x32 m-r-5">
+                                        <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                    </figure>
+                                    <span>
+                                        <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                        <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                            (edited)</p>
+                                    </span>
                                 </span>
-                            </span>
-                        </p>
-                        <a href="#" class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
-                            </span>
-                        </a>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <p class="has-text-grey has-text-weight-medium ">Updated Status from:
                             </p>
-                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-dark has-text-weight-medium is-size-7">
-                                Recovery Completed . Recovery Guarantee to Pay</p>
-                            <p class="has-text-grey has-text-weight-medium ">To:
+                            <a href="#" class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                                </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="has-text-grey has-text-weight-medium ">Sent Fax</p>
+                                <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
+                                    This is some fax tag that was selected</p>
+                                <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
+                                    manually entered by
+                                    Nathaniel.</p>
+                            </div>
+                        </div>
+                        <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                            <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
+                            1234</button> -->
+                            <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
+                                    class="m-l-10"><i class="fas fa-bell"></i></span></button>
+
+                        </footer>
+                    </div>
+                    <div class="card m-t-10" style="position: relative">
+                        <div class="ribbon has-text-white has-background-purple" matTooltip="Note"
+                            [matTooltipPosition]="'above'">
+                            <i class="fas fa-sticky-note"></i>
+                        </div>
+                        <header class="card-header p-l-15">
+                            <p class="card-header-title">
+                                <span class="is-flex align-items-center">
+                                    <figure class="image is-32x32 m-r-5">
+                                        <img class="is-rounded" src="../../assets/images/person_1.jpg">
+                                    </figure>
+                                    <span>
+                                        <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
+                                        <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
+                                            (edited)</p>
+                                    </span>
+                                </span>
                             </p>
-                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-dark has-text-weight-medium is-size-7">
-                                Recovery Completed . Recovery Guarantee to Pay</p>
-
-                        </div>
-                    </div>
-                    <!-- <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20"> -->
-                    <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
-                            1234</button> -->
-                    <!-- <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
-                                class="m-l-10"><i class="fas fa-bell"></i></span></button> -->
-
-                    <!-- </footer> -->
-                </div>
-                <div class="card m-t-10">
-                    <div class="ribbon has-text-white has-background-cyan" matTooltip="Faxed"
-                        [matTooltipPosition]="'above'">
-                        <i class="fas fa-tty"></i>
-                    </div>
-                    <header class="card-header p-l-15">
-                        <p class="card-header-title">
-                            <span class="is-flex align-items-center">
-                                <figure class="image is-32x32 m-r-5">
-                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
-                                </figure>
-                                <span>
-                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
-                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
-                                        (edited)</p>
+                            <a href="#" class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <i class="fas fa-ellipsis-v has-text-grey-light"></i>
                                 </span>
-                            </span>
-                        </p>
-                        <a href="#" class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
-                            </span>
-                        </a>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <p class="has-text-grey has-text-weight-medium ">Sent Fax</p>
-                            <p class="chip p-t-5 p-b-5 p-r-5 p-l-5 has-text-grey has-text-weight-medium is-size-7">
-                                This is some fax tag that was selected</p>
-                            <p class="has-text-dark has-text-weight-medium is-size-7">This is text that has been
-                                manually entered by
-                                Nathaniel.</p>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="has-text-dark has-text-weight-medium is-size-7">Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit. Ad architecto eaque id doloremque similique
+                                    perspiciatis
+                                    ipsa impedit, asperiores deleniti! Quidem?</p>
+                            </div>
                         </div>
-                    </div>
-                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
-                        <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
+                        <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
+                            <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
                             1234</button> -->
-                        <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
-                                class="m-l-10"><i class="fas fa-bell"></i></span></button>
+                            <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
+                                    class="m-l-10"><i class="fas fa-bell"></i></span></button>
 
-                    </footer>
-                </div>
-                <div class="card m-t-10" style="position: relative">
-                    <div class="ribbon has-text-white has-background-purple" matTooltip="Note"
-                        [matTooltipPosition]="'above'">
-                        <i class="fas fa-sticky-note"></i>
+                        </footer>
                     </div>
-                    <header class="card-header p-l-15">
-                        <p class="card-header-title">
-                            <span class="is-flex align-items-center">
-                                <figure class="image is-32x32 m-r-5">
-                                    <img class="is-rounded" src="../../assets/images/person_1.jpg">
-                                </figure>
-                                <span>
-                                    <p class="has-text-weight-medium">Nathaniel Joseph (me)</p>
-                                    <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019
-                                        (edited)</p>
-                                </span>
-                            </span>
-                        </p>
-                        <a href="#" class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v has-text-grey-light"></i>
-                            </span>
-                        </a>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <p class="has-text-dark has-text-weight-medium is-size-7">Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Ad architecto eaque id doloremque similique perspiciatis
-                                ipsa impedit, asperiores deleniti! Quidem?</p>
-                        </div>
-                    </div>
-                    <footer class="card-footer is-flex justify-content-start p-t-10 p-b-20">
-                        <!-- <button class="button is-outlined is-primary is-size-7 m-r-5">Call Back #: 123 1234
-                            1234</button> -->
-                        <button class="button is-outlined is-primary is-size-7 m-l-30">Add Reminder<span
-                                class="m-l-10"><i class="fas fa-bell"></i></span></button>
+                </section>
+            </div>
+        </div>
+    </section>
 
-                    </footer>
-                </div>
-            </section>
+    <div class="modal" [ngClass]="{'is-active': moreInfoModalDisplay===true}">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <button
+                class="button modalCloseButton roundButton modifiedSmallRoundedButton has-text-grey is-white is-size-7"
+                (click)="closeMoreInfo()"><i class="fa fa-times"></i></button>
+            <div class="box p-r-50 p-l-50">
+                <p class="has-text-dark has-text-weight-bold is-size-5 p-b-20 p-t-10 has-text-centered">Claim Details
+                </p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias cupiditate qui delectus cum iste
+                    modi
+                    praesentium unde rerum, nemo quasi nihil temporibus dolorem eaque repudiandae omnis aperiam iure
+                    amet
+                    dignissimos? Magni quaerat fugit ipsa corrupti ex eius! Ullam, impedit. Quod molestiae repudiandae
+                    eligendi nihil, quisquam ratione maxime ex cum iste laudantium nisi sed ipsa itaque, vero mollitia
+                    id
+                    explicabo eum? Explicabo quisquam reprehenderit adipisci, exercitationem tempore eveniet sunt
+                    dignissimos nihil deleniti commodi debitis quas perspiciatis quos, delectus magni laudantium,
+                    similique
+                    minus at. Incidunt numquam hic laboriosam repellat fugit vel, in iste debitis cupiditate accusamus
+                    libero rem fugiat magni eum. Dolorum!
+                    <br>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex at, ad accusamus nesciunt
+                    reprehenderit,
+                    vel, nostrum quisquam sunt itaque quasi voluptatem a vero. Sit sint voluptatibus porro totam,
+                    recusandae
+                    ipsum?
+                </p>
+                <span class="has-text-centerd is-flex justify-content-center">
+                    <button class="button is-primary m-t-20 m-b-20" (click)="closeMoreInfo()">Close</button>
+                </span>
+            </div>
         </div>
     </div>
-</section>
 
-<div class="modal" [ngClass]="{'is-active': moreInfoModalDisplay===true}">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <button class="button modalCloseButton roundButton modifiedSmallRoundedButton has-text-grey is-white is-size-7"
-            (click)="closeMoreInfo()"><i class="fa fa-times"></i></button>
-        <div class="box p-r-50 p-l-50">
-            <p class="has-text-dark has-text-weight-bold is-size-5 p-b-20 p-t-10 has-text-centered">Claim Details</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias cupiditate qui delectus cum iste modi
-                praesentium unde rerum, nemo quasi nihil temporibus dolorem eaque repudiandae omnis aperiam iure amet
-                dignissimos? Magni quaerat fugit ipsa corrupti ex eius! Ullam, impedit. Quod molestiae repudiandae
-                eligendi nihil, quisquam ratione maxime ex cum iste laudantium nisi sed ipsa itaque, vero mollitia id
-                explicabo eum? Explicabo quisquam reprehenderit adipisci, exercitationem tempore eveniet sunt
-                dignissimos nihil deleniti commodi debitis quas perspiciatis quos, delectus magni laudantium, similique
-                minus at. Incidunt numquam hic laboriosam repellat fugit vel, in iste debitis cupiditate accusamus
-                libero rem fugiat magni eum. Dolorum!
-                <br>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex at, ad accusamus nesciunt reprehenderit,
-                vel, nostrum quisquam sunt itaque quasi voluptatem a vero. Sit sint voluptatibus porro totam, recusandae
-                ipsum?
-            </p>
-            <span class="has-text-centerd is-flex justify-content-center">
-                <button class="button is-primary m-t-20 m-b-20" (click)="closeMoreInfo()">Close</button>
-            </span>
-        </div>
-    </div>
-</div>
-
-<div class="modal" [ngClass]="{'is-active': reassignModalDisplay===true}">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <button class="button modalCloseButton roundButton modifiedSmallRoundedButton has-text-grey is-white is-size-7"
-            (click)="closeReassignModal()"><i class="fa fa-times"></i></button>
-        <div class="box p-r-50 p-l-50">
-            <p class="has-text-dark has-text-weight-bold is-size-5 p-b-20 p-t-10 has-text-centered">Reassign Edit</p>
-            <p class="has-text-dark">Are you sure that you want assign this claim to a different
-                person?
-            </p>
-            <span class="has-text-centerd is-flex justify-content-center">
-                <button class="button is-primary is-outlined m-t-20 m-b-20 m-r-10" (click)="closeReassignModal()">No,
-                    Nevermind</button>
-                <button class="button is-primary m-t-20 m-b-20 m-l-10" (click)="closeReassignModal()">Yes,
-                    Reassign</button>
-            </span>
+    <div class="modal" [ngClass]="{'is-active': reassignModalDisplay===true}">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <button
+                class="button modalCloseButton roundButton modifiedSmallRoundedButton has-text-grey is-white is-size-7"
+                (click)="closeReassignModal()"><i class="fa fa-times"></i></button>
+            <div class="box p-r-50 p-l-50">
+                <p class="has-text-dark has-text-weight-bold is-size-5 p-b-20 p-t-10 has-text-centered">Reassign Edit
+                </p>
+                <p class="has-text-dark">Are you sure that you want assign this claim to a different
+                    person?
+                </p>
+                <span class="has-text-centerd is-flex justify-content-center">
+                    <button class="button is-primary is-outlined m-t-20 m-b-20 m-r-10"
+                        (click)="closeReassignModal()">No,
+                        Nevermind</button>
+                    <button class="button is-primary m-t-20 m-b-20 m-l-10" (click)="closeReassignModal()">Yes,
+                        Reassign</button>
+                </span>
+            </div>
         </div>
     </div>
 </div>

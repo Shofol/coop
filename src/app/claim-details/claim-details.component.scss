@@ -47,6 +47,12 @@
 
 .largeMenu {
   max-width: 80vw;
+  .headerMenu {
+    flex-flow: wrap-reverse;
+    .recover {
+      margin-top: 0.5rem;
+    }
+  }
 }
 
 .modifiedRoundedButton {
@@ -92,4 +98,13 @@
 
 .has-background-purple {
   background: #7988ff;
+}
+
+@media only screen and (max-width: 1265px) {
+  .headerMenu {
+    flex-flow: wrap-reverse;
+    .recover {
+      margin-top: 0.5rem;
+    }
+  }
 }
