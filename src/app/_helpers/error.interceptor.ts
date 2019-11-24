@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpErrorResponse } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpInterceptor, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, switchMap, finalize, filter, take } from 'rxjs/operators';
 
@@ -23,7 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 case 400:   return <any>this.authService.logout();
             }
             
-            const error = err.error.message || err.statusText;
+            const error = err.message || err.statusText;
             return throwError(error);
         }))
     }
@@ -45,9 +45,9 @@ export class ErrorInterceptor implements HttpInterceptor {
             .pipe(
               switchMap((axs: Auth) => {
                 if(axs) {
-                  this.tokenSubject.next(axs.access);;
-                  localStorage.setItem('acess', JSON.stringify(axs));
-                  return next.handle(this.addTokenToRequest(request, axs.access));
+                  this.tokenSubject.next(axs.accesskey);;
+                  localStorage.setItem('access', JSON.stringify(axs));
+                  return next.handle(this.addTokenToRequest(request, axs.accesskey));
                 }
     
                 return <any>this.authService.logout();

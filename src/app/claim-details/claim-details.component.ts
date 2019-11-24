@@ -123,7 +123,7 @@ export class ClaimDetailsComponent implements OnInit {
   showReassignModal(person) {
     this.reassignModalDisplay = true;
   }
-  closeReassignModal(person) {
+  closeReassignModal() {
     this.reassignModalDisplay = false;
   }
 

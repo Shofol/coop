@@ -76,39 +76,19 @@
                     <app-notification></app-notification>
                 </span>
             </div>
-        </div>
-        <div class="is-flex space-between p-t-10">
-            <span>
-                <p class="has-text-dark">Total Amount</p>
-                <p class="has-text-light-gray">$100,120.30</p>
-            </span>
-            <span>
-                <p class="has-text-dark">Case ID #</p>
-                <p class="has-text-light-gray">1234123</p>
-            </span>
-            <span>
-                <p class="has-text-dark">Tax ID #</p>
-                <p class="has-text-light-gray">234123</p>
-            </span>
-            <span>
-                <p class="has-text-dark">Provider Name</p>
-                <p class="has-text-light-gray">Name goes here</p>
-            </span>
-            <span>
-                <p class="has-text-dark">Client Name</p>
-                <p class="has-text-light-gray">Name goes here</p>
-            </span>
-            <span>
-                <p class="has-text-dark">Days active</p>
-                <p class="has-text-light-gray">12</p>
-            </span>
-            <span>
-                <p class="has-text-dark">Last activity</p>
-                <p class="has-text-light-gray">Rodgers added a notification</p>
-            </span>
-            <span>
-                <button class="button is-medium is-primary  p-l-20 p-r-20"><span class="is-size-6">Call
-                        billing</span></button>
+            <div class="calendar">
+                <p style="margin-bottom: -40px;">Expected Payment Date</p>
+                <br>
+                <mat-form-field class="example-full-width" floatLabel="never">
+                    <input matInput [matDatepicker]="picker" placeholder="Select date">
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                        <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker color="red"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <span class="is-flex align-items-center" style="width: 50px;">
+                <app-notification></app-notification>
             </span>
         </div>
     </section>

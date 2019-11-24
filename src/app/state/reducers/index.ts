@@ -3,20 +3,21 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
-import * as fromMenu from './menu.reducer';
 import * as fromUser from './user.reducer';
+import * as fromDashboard from './dashboard/dashboard.reducer';
+import * as fromApplication from './application/application.reducer';
 
 export interface AppState {
 
-  [fromMenu.menuFeatureKey]: fromMenu.MenuState;
-  [fromUser.userFeatureKey]: fromUser.UserState;
+  	"user"        	: fromUser.UserState;
+	"dashboard"   	: fromDashboard.DashboardState;
+	"application" 	: fromApplication.ApplicationState;  
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-
-  [fromMenu.menuFeatureKey]: fromMenu.reducer,
-  [fromUser.userFeatureKey]: fromUser.reducer
+	"user" 			: fromUser.reducer,
+	"dashboard" 	: fromDashboard.reducer,
+	"application" 	: fromApplication.reducer 
 };
-
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

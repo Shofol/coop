@@ -14,11 +14,9 @@ export const slideInOutLeaveAnimation = animation([
 
 export const fadeInOutEnterAnimation = animation([
     style({ opacity: 0 }),
-    animate('200ms ease-in', style({ opacity: '100%' }))
+    animate('200ms ease-in', style({ opacity: 1 }))
 ]);
 
 export const fadeInOutLeaveAnimation = animation([
     animate('200ms ease-in', style({ opacity: 0 }))
 ]);
-
-

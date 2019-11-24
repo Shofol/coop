@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { MenuService } from '@/_services';
+import { MenuService } from './menu.service';
 import { Menu } from '@/_models';
 
 @Injectable()

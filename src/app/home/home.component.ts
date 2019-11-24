@@ -1,17 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../_services/sidebar.service';
+import { User } from '@/_models';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '@/state/reducers';
+import { getUser } from '@/state/selectors/user.selector';
+import { Observable } from 'rxjs';
+import { AuthenticationService, SidebarService } from '@/_services';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
-})
+@Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
+    currentUser$: Observable<User>;
 
-  constructor(private sidebarService: SidebarService) { }
+    constructor(public authenticationService: AuthenticationService,
+                // private sidebarService: SidebarService,
+				private store: Store<AppState>) {
+        this.currentUser$ = this.store.pipe(select(getUser));
+    }
 
-  ngOnInit() {
-    this.sidebarService.enableFullSizeSidebar();
-  }
+    ngOnInit() {
+        // this.sidebarService.enableFullSizeSidebar();
+    }
 
+    ngOnDestroy() {
+        // this.currentUser$.unsubscribe();
+        // TODO https://medium.com/@stodge/ngrx-common-gotchas-8f59f541e47c
+    }
 }
