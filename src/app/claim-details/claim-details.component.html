@@ -76,20 +76,6 @@
                     <app-notification></app-notification>
                 </span>
             </div>
-            <div class="calendar">
-                <p style="margin-bottom: -40px;">Expected Payment Date</p>
-                <br>
-                <mat-form-field class="example-full-width" floatLabel="never">
-                    <input matInput [matDatepicker]="picker" placeholder="Select date">
-                    <mat-datepicker-toggle matSuffix [for]="picker">
-                        <!-- <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon> -->
-                    </mat-datepicker-toggle>
-                    <mat-datepicker #picker color="red"></mat-datepicker>
-                </mat-form-field>
-            </div>
-            <span class="is-flex align-items-center" style="width: 50px;">
-                <app-notification></app-notification>
-            </span>
         </div>
     </section>
 
