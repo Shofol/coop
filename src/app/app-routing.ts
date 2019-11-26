@@ -10,16 +10,16 @@ import { DashBoardResolverService } from './dashboard/dashboard.resolver.service
 import { NotificationResolverService } from './notification/notification.resolver.service';
 
 const routes: Routes = [
-  	{ 
-		path 			: '', 
-		component 		: ContainerComponent,
-		canActivate 	: [AuthGuard],
+	{
+		path: '',
+		component: ContainerComponent,
+		// canActivate 	: [AuthGuard],
 		// resolve 		: { notifications: NotificationResolverService },
-		children 		: [
-			
+		children: [
+
 			{ path: '', redirectTo: 'home', pathMatch: 'full' },
 			{ path: 'home', component: HomeComponent },
-			{ path: 'claim-details', component: ClaimDetailsComponent },
+			{ path: 'claim-details', loadChildren: './claim-details/claim-details.module#ClaimDetailsModule' },
 			{ path: 'dashboard', component: DashboardComponent, /* resolve: { dashboard: DashBoardResolverService } */ },
 			{ path: 'my-claims', component: MyClaimsComponent }
 		]

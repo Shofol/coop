@@ -32,18 +32,17 @@ import { LoaderInterceptor } from './_helpers/loader.interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardEffects } from './state/effects/dashboard.effects';
 import { NotificationResolverService } from './notification/notification.resolver.service';
+import { ClaimSharedModule } from './shared/claim.shared.module';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		DashboardComponent,
 		MyClaimsComponent,
-		ClaimDetailsComponent,
 		ContainerComponent,
 		LoginComponent,
 		HomeComponent,
 		MenuComponent,
-		NotificationComponent,
 		AlertComponent
 	],
 	imports: [
@@ -75,7 +74,8 @@ import { NotificationResolverService } from './notification/notification.resolve
 		EffectsModule.forRoot([DashboardEffects]),
 		BrowserAnimationsModule,
 		MatTooltipModule,
-		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+		ClaimSharedModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
