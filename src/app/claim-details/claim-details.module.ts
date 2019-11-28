@@ -6,9 +6,18 @@ import { MatExpansionModule, MatDatepickerModule, MatFormFieldModule, MatNativeD
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ClaimSharedModule } from '../shared/claim.shared.module';
+import { OverviewComponent } from './overview/overview.component';
+import { DetailsComponent } from './details/details.component';
+import { DocumentComponent } from './document/document.component';
+import { ResourceComponent } from './resource/resource.component';
+import { ClaimComponent } from './overview/claim/claim.component';
+import { EmployeeComponent } from './overview/employee/employee.component';
+import { PatientComponent } from './overview/patient/patient.component';
+import { ClaimProviderComponent } from './overview/claim-provider/claim-provider.component';
+import { BatchInfoComponent } from './overview/batch-info/batch-info.component';
 
 @NgModule({
-  declarations: [ClaimDetailsComponent],
+  declarations: [ClaimDetailsComponent, OverviewComponent, DetailsComponent, DocumentComponent, ResourceComponent, ClaimComponent, EmployeeComponent, PatientComponent, ClaimProviderComponent, BatchInfoComponent],
   imports: [
     CommonModule,
     ClaimSharedModule,

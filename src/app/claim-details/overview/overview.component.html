@@ -1,0 +1,10 @@
+<section class="section p-t-0">
+    <span class="is-flex p-b-20">
+        <a class="p-r-10 has-text-grey" [routerLink] = "['claim']" queryParamsHandling="merge">Claim</a>
+        <a class="p-r-10 has-text-grey" [routerLink] = "['employee']">Employee</a>
+        <a class="p-r-10 has-text-grey" [routerLink] = "['patient']">Patient</a>
+        <a class="p-r-10 has-text-grey" [routerLink] = "['claim-provider']">Claim provider</a>
+        <a class="p-r-10 has-text-grey" [routerLink] = "['batch-info']">Batch Info</a>
+    </span>
+    <router-outlet></router-outlet>
+</section>
