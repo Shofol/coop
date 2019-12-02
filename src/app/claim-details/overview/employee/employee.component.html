@@ -1,19 +1,19 @@
 <h2>Employee Information</h2>
 <p>Last updated 7/12/2019</p>
 
-<form action="" class="m-t-20">
+<form action="" class="m-t-20" [formGroup]="employeeForm">
     <div class="columns">
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Member ID</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="memberId">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            <mat-error *ngIf="employeeForm.controls['memberId'].hasError('required')">Member ID is required</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Group</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="group">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -21,7 +21,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Plan</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="plan">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -31,7 +31,7 @@
     <div class="columns">
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>SSN</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="ssn">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -39,7 +39,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Group Description</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="groupDescription">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -47,7 +47,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Plan Description</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="planDescription">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -57,39 +57,29 @@
     <div class="columns">
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="name">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
             <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
         </mat-form-field>
-        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
-            <mat-label>Group</mat-label>
-            <input matInput placeholder="-">
-            <!-- formControlName="control" -->
-            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-            <!-- <mat-hint>Id of member</mat-hint> -->
-            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-        </mat-form-field>
+
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>TOC Description</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="tocDescription">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
             <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
         </mat-form-field>
     </div>
-</form>
 
-<h2>Employee Address</h2>
-<p>Last updated 7/12/2019</p>
-
-<form action="" class="m-t-20">
-    <div class="columns">
+    <h2>Employee Address</h2>
+    <p>Last updated 7/12/2019</p>
+    <div class="columns m-t-20">
         <mat-form-field appearance="outline" class="column is-two-thirds" [floatLabel]="'always'">
             <mat-label>Address</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="address">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -97,7 +87,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Address 2</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="address2">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -107,7 +97,7 @@
     <div class="columns">
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>City</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="city">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -115,7 +105,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>State</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="state">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -123,7 +113,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
             <mat-label>Zip code</mat-label>
-            <input matInput placeholder="-">
+            <input matInput placeholder="-" formControlName="zipCode">
             <!-- formControlName="control" -->
             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
             <!-- <mat-hint>Id of member</mat-hint> -->
@@ -132,4 +122,4 @@
     </div>
 </form>
 
-<button class="button is-success">Save Changes</button>
+<button class="button is-success m-t-20" [disabled]="employeeForm.invalid" (click)="submit()">Save Changes</button>
