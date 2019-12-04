@@ -23,6 +23,7 @@ export class PatientComponent implements OnInit {
       ssn: [],
       accountNumber: [],
       planDescription: [],
+      effectiveDate: [],
       name: [],
       sex: [],
       dob: [],

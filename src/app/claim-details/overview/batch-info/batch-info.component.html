@@ -1,1 +1,73 @@
-<p>batch-info works!</p>
+<h2>Batch Information</h2>
+<p>Last updated 7/12/2019</p>
+
+<form action="" class="m-t-20" [formGroup]="batchInfoForm">
+    <div class="columns">
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Provider Tax ID</mat-label>
+            <input matInput placeholder="-" formControlName="providerTaxId">
+            <mat-error *ngIf="batchInfoForm.controls['providerTaxId'].hasError('required')">Provider Tax ID is
+                required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Name</mat-label>
+            <input matInput placeholder="-" formControlName="physicianName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Zip Code</mat-label>
+            <input matInput placeholder="-" formControlName="physicianZipCode">
+        </mat-form-field>
+    </div>
+    <div class="columns">
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Provider Suffix</mat-label>
+            <input matInput placeholder="-" formControlName="providerSuffix">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Address 1</mat-label>
+            <input matInput placeholder="-" formControlName="physicianAddress1">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Phone</mat-label>
+            <input matInput placeholder="-" formControlName="physicianPhone">
+        </mat-form-field>
+    </div>
+    <div class="columns">
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Group Name</mat-label>
+            <input matInput placeholder="-" formControlName="groupName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Address 2</mat-label>
+            <input matInput placeholder="-" formControlName="physicianAddress2">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Fax</mat-label>
+            <input matInput placeholder="-" formControlName="physicianFax">
+        </mat-form-field>
+    </div>
+    <div class="columns">
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician First Name</mat-label>
+            <input matInput placeholder="-" formControlName="physicianFirstName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician City</mat-label>
+            <input matInput placeholder="-" formControlName="physicianCity">
+        </mat-form-field>
+        <div class="column"></div>
+    </div>
+    <div class="columns">
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician Last Name</mat-label>
+            <input matInput placeholder="-" formControlName="physicianLastName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="column" [floatLabel]="'always'">
+            <mat-label>Physician State</mat-label>
+            <input matInput placeholder="-" formControlName="physicianState">
+        </mat-form-field>
+        <div class="column"></div>
+    </div>
+</form>
+<button class="button is-success m-t-20" [disabled]="batchInfoForm.invalid" (click)="submit()">Save Changes</button>
