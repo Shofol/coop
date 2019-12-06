@@ -26,6 +26,10 @@
 // custom modifier for spacers. 10 means 1 rem, 5 means .5rem and so on.
 $spaceamounts: (
   0,
+  1,
+  2,
+  3,
+  4,
   5,
   10,
   15,
@@ -36,8 +40,17 @@ $spaceamounts: (
   40,
   45,
   50,
+  60,
+  70,
   75,
-  100
+  80,
+  90,
+  100,
+  110,
+  120,
+  130,
+  140,
+  150
 ); // Adjust this to include the pixel amounts you need.
 $sides: (top, bottom, left, right); // Leave this variable alone
 
@@ -50,5 +63,31 @@ $sides: (top, bottom, left, right); // Leave this variable alone
     .p-#{str-slice($side, 0, 1)}-#{$space} {
       padding-#{$side}: #{$space/10}rem !important;
     }
+  }
+}
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space/10}rem !important;
+  }
+
+  .p-#{$space} {
+    padding: #{$space/10}rem !important;
+  }
+}
+
+$flexamounts: (1, 2, 3);
+
+@each $flex in $flexamounts {
+  .flex-#{$flex} {
+    flex: #{$flex} !important;
+  }
+}
+
+$orderNumbers: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+@each $orderNumber in $orderNumbers {
+  .order-#{$orderNumber} {
+    order: #{$orderNumber} !important;
   }
 }

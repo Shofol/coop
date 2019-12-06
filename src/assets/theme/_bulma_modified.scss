@@ -49,6 +49,10 @@ $modal-content-width: 700px;
   }
 }
 
+.dropdown-menu {
+  z-index: 40;
+}
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";

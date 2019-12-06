@@ -1,1 +1,70 @@
-<p>document works!</p>
+<div>
+    <ul class="is-flex">
+        <li><span class="m-r-10">All</span></li>
+        <li><span class="m-r-10">Priovided by client</span></li>
+        <li>Internal</li>
+    </ul>
+</div>
+<div class="is-flex space-between">
+    <div>
+        <h2>Documents</h2>
+        <p>Last updated 7/12/2019</p>
+    </div>
+    <button class="button is-primary is-small">Add new Document</button>
+</div>
+
+
+<div class="is-flex flex-wrap justify-content-start">
+    <div class="card m-r-5 m-l-5 m-t-10" *ngFor="let document of documents">
+        <div class="card-content">
+            <div class="content has-text-grey">
+                <p>Onboarding Script <br> title goes here</p>
+            </div>
+        </div>
+        <footer class="card-footer is-flex space-between is-size-7 p-t-10 p-l-10 p-b-10">
+            <span>
+                <p class="has-text-weight-medium">Nathaniel Joseph</p>
+                <p class="is-size-7 has-text-grey has-text-weight-normal">4:20pm on 10/14/2019</p>
+            </span>
+            <div class="dropdown is-hoverable is-right">
+                <div class="dropdown-trigger">
+                    <a class="button is-small is-white" aria-haspopup="true" aria-controls="dropdown-menu2"
+                        matTooltip="Option" [matTooltipPosition]="'above'">
+                        <span class="icon">
+                            <i class="fas fa-ellipsis-v has-text-grey-light"></i>
+                        </span>
+                    </a>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                    <div class="dropdown-content" style="width: 16rem;">
+                        <div class="dropdown-item p-l-20 p-r-20 has-text-dark">
+                            <ul>
+                                <li>
+                                    <p class="p-t-5 p-b-5"> <a> <i class="fa fa-download has-text-grey-light p-r-5"></i>
+                                            <span class="has-text-dark has-text-weight-medium is-size-7">
+                                                Download</span></a>
+                                    </p>
+                                </li>
+                                <mat-divider></mat-divider>
+                                <li>
+                                    <p class="p-t-5 p-b-5"><a> <i class="fa fa-upload has-text-grey-light p-r-5"></i>
+                                            <span class="has-text-dark has-text-weight-medium is-size-7"> Upload new
+                                                version</span></a></p>
+                                </li>
+                                <mat-divider></mat-divider>
+
+                                <li>
+                                    <p class="p-t-5 p-b-5"><a><i class="fa fa-archive has-text-grey-light p-r-5"></i>
+                                            <span class="has-text-dark has-text-weight-medium is-size-7">
+                                                Archieve</span></a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>

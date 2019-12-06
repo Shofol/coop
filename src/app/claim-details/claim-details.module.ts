@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClaimDetailsComponent } from './claim-details.component';
 import { ClaimDetailRoutingModule } from './claim-details.routes';
-import { MatExpansionModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatIconModule, MatInputModule, MatTooltipModule, MatError } from '@angular/material';
+import { MatExpansionModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatIconModule, MatInputModule, MatTooltipModule, MatError, MatDividerModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ClaimSharedModule } from '../shared/claim.shared.module';
@@ -28,6 +28,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatNativeDateModule,
     MatMomentDateModule,
+    MatDividerModule,
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resource.component.scss']
 })
 export class ResourceComponent implements OnInit {
+  resources = [1, 2, 3];
 
   constructor() { }
 
