@@ -1,7 +1,7 @@
 // Bulma extentions
 $cyan: #00a4e5;
 $purple: #6e68a8;
-$pink: #de4382;
+$pink: #f9e5ea;
 $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
@@ -13,10 +13,11 @@ $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $cyan;
 $danger: $red;
+$notification-background-color: $pink;
 // $link: $pink;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
-
+$notification-radius: 0px;
 // Update some of Bulma's component variables
 // $body-background-color: $beige-lighter;
 $control-border-width: 2px;
@@ -58,4 +59,6 @@ $modal-content-width: 700px;
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/components/menu.sass";
+@import "../node_modules/bulma/sass/elements/notification.sass";
+
 // @import "../node_modules/bulma/sass/elments/tag.sass";
